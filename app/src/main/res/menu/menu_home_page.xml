@@ -1,0 +1,38 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".HomePage">
+    <item
+        android:id="@+id/action_login"
+        android:title="@string/action_login"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:onClick="login"/>
+
+    <item
+        android:id="@+id/action_insert"
+        android:title="@string/action_insert"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:onClick="insert"/>
+
+    <item
+        android:id="@+id/action_myCars"
+        android:title="@string/action_myCars"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:onClick="myCars"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:title="@string/action_settings"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:onClick="settings"/>
+
+    <item
+        android:id="@+id/action_about"
+        android:title="@string/action_about"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:onClick="about"/>
+</menu>

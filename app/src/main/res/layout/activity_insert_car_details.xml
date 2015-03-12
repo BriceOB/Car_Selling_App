@@ -1,0 +1,118 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.brice.muhamed.carsellingapp.InsertCarDetails"
+    android:id="@+id/showCarDetails">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff686868" >
+
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TextViewCar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:layout_weight="1"
+            android:text="@string/car"
+            android:background="#ffff0001"
+            android:textColor="#ffffffff" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerManufacture"
+            android:layout_weight="1"
+            android:spinnerMode="dropdown"
+            android:textSize="30pt"/>
+
+        <EditText
+            android:id="@+id/EditTextModel"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/model"
+            android:inputType="text"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <EditText
+            android:id="@+id/EditTextYear"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/year"
+            android:inputType="number"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <EditText
+            android:id="@+id/EditTextKm"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/km"
+            android:inputType="number"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerFuel"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerGearbox"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1" />
+
+        <EditText
+            android:id="@+id/EditTextDoors"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/doors"
+            android:inputType="number"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <EditText
+            android:id="@+id/EditTextPrice"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/price"
+            android:inputType="numberDecimal"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <EditText
+            android:id="@+id/EditTextDescription"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/description"
+            android:inputType="textMultiLine"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:id="@+id/buttonSubmitCar"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+</ScrollView>

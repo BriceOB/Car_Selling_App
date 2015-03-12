@@ -1,0 +1,99 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.brice.muhamed.carsellingapp.InsertSeller"
+    android:id="@+id/showCarDetails">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff686868" >
+
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TextViewSeller"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:layout_weight="1"
+            android:text="@string/seller"
+            android:background="#ffff0001"
+            android:textColor="#ffffffff" />
+
+
+        <EditText
+            android:id="@+id/EditTextName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd" />
+
+        <EditText
+            android:id="@+id/EditTextAddress"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/address"
+            android:inputType="textPostalAddress"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <EditText
+            android:id="@+id/EditTextPlace"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/postalCode"
+            android:inputType="number"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPostalAddress"
+            android:id="@+id/editTextPlace"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:hint="@string/place"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <EditText
+            android:id="@+id/EditTextPhone"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/phone"
+            android:inputType="phone"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <EditText
+            android:id="@+id/EditTextEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/submit"
+            android:id="@+id/buttonSubmitSeller"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"/>
+
+    </LinearLayout>
+</ScrollView>
+

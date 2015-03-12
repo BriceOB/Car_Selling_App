@@ -1,0 +1,384 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.brice.muhamed.carsellingapp.ShowCarDetails"
+    android:id="@+id/showCarDetails">
+
+
+
+
+    <!-- Car details -->
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:background="#ff686868"
+        android:id="@+id/tableLayout">
+
+        <!--space for photo-->
+        <Space
+            android:layout_width="fill_parent"
+            android:layout_height="300dp" />
+
+        <TableRow>
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/TextViewCar"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="10dip"
+                android:layout_weight="1"
+                android:text="@string/car"
+                android:background="#ffff0001"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewManufacture"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/manufacture"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputManufacture"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewModel"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/model"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputModel"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewYear"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/year"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputYear"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewKm"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/km"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputKm"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewFuel"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/fuel"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputFuel"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewGearbox"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/gearbox"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputGearbox"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewDoors"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/doors"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputDoors"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewPrice"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/price"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputPrice"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewDescription"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/description"
+                android:textColor="#ffffffff" />
+        </TableRow>
+        <TableRow>
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputDescription"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/TextViewSellerDetails"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="10dip"
+                android:layout_weight="1"
+                android:text="@string/seller"
+                android:background="#ffff0001"
+                android:textColor="#FFFFFF" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewSellerName"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/name"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputSellerName"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewSellerAddress"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/address"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputSellerAddress"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewSellerPlace"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/place"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputSellerPlace"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewSellerPostalCode"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/postalCode"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputSellerPostalCode"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewSellerPhone"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/phone"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputSellerPhone"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <TextView
+                android:id="@+id/TextViewSellerEmail"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/email"
+                android:textColor="#ffffffff" />
+
+            <!-- Column 2 -->
+            <TextView
+                android:id="@+id/TextViewInputSellerEmail"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/inputUser"
+                android:textColor="#ffffffff" />
+        </TableRow>
+    </TableLayout>
+
+</ScrollView>
