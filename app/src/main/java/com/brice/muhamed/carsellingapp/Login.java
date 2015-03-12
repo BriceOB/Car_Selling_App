@@ -10,6 +10,8 @@ import android.view.View;
 
 public class Login extends ActionBarActivity {
 
+    //This is a test comment!
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
