@@ -11,8 +11,6 @@ public final class SellerContract {
     public SellerContract() {
     }
 
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "Car_Selling_Database.db";
 
     public static abstract class EntrySeller implements BaseColumns {
         public static final String TABLE_NAME = "Seller";

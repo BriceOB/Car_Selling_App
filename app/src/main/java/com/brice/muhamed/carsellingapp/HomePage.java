@@ -24,10 +24,11 @@ public class HomePage extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
+        DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
 
-        //Spinner Manufacturer
+       // Spinner Manufacturer
         Spinner spinner = (Spinner) findViewById(R.id.spinnerManufacturer);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.manufacturerList, R.layout.my_spinner_layout);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getManufacturer());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
 

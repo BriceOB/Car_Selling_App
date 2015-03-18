@@ -11,13 +11,8 @@ public final class CarContract {
     public CarContract() {
     }
 
-    public static final  int    DATABASE_VERSION   = 1;
-    public static final  String DATABASE_NAME      = "Car_Selling_Database.db";
 
 
-
-    // To prevent someone from accidentally instantiating the contract class,
-    // give it an empty constructor.
 
 
 /*  //Table `Car_Selling_Database`.`Car`

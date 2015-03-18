@@ -28,7 +28,6 @@ public class InsertSeller extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_seller);
 
-        Log.d("On Insert: ", "Opening ..");
     }
 
 
@@ -54,18 +53,12 @@ public class InsertSeller extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
     public void register(View view) {
 
-
-
-DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
-
-
+        DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
 
         String username = ((TextView)findViewById(R.id.EditTextName)).toString();
-        String password = ((TextView)findViewById(R.id.EditTextP)).toString();
-
+        String password = ((TextView)findViewById(R.id.editTextPassword)).toString();
 
         dbh.addContact(new Seller(username,password));
 
