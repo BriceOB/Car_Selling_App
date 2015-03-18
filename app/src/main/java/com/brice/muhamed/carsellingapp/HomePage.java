@@ -10,6 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
+import com.brice.muhamed.carsellingapp.Database.ManufacturerContract;
+
 
 public class HomePage extends ActionBarActivity {
 
@@ -20,6 +23,7 @@ public class HomePage extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
 
         //Spinner Manufacturer
         Spinner spinner = (Spinner) findViewById(R.id.spinnerManufacturer);

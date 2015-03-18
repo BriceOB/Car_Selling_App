@@ -92,7 +92,9 @@
             android:text="@string/submit"
             android:id="@+id/buttonSubmitSeller"
             android:layout_weight="1"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:onClick="submit"
+            android:nestedScrollingEnabled="false" />
 
     </LinearLayout>
 </ScrollView>

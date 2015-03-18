@@ -1,17 +1,21 @@
 package com.brice.muhamed.carsellingapp;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
+
+import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
+import com.brice.muhamed.carsellingapp.Database.SellerContract;
 
 
 public class Login extends ActionBarActivity {
 
-    //This is a test comment!
-    //this is another test comment
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,9 @@ public class Login extends ActionBarActivity {
     }
 
     public void register(View view) {
+
+
+
         Intent intent = new Intent(this, InsertSeller.class);
         startActivity(intent);
     }

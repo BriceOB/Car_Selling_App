@@ -1,12 +1,24 @@
 package com.brice.muhamed.carsellingapp;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
+import com.brice.muhamed.carsellingapp.Database.SellerContract;
 
 
 public class InsertSeller extends ActionBarActivity {
+
+    private DatabaseHandler Dbh = new DatabaseHandler(getBaseContext());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,4 +48,25 @@ public class InsertSeller extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
+    public void register(View view) {
+
+
+
+        String username = ((TextView)findViewById(R.id.EditTextName)).toString();
+
+        SQLiteDatabase db = Dbh.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SellerContract.EntrySeller.COLUMN_NAME_USERNAME, username);
+        values.put(SellerContract.EntrySeller.COLUMN_NAME_PASSWORD, "password");
+
+
+        long RowId = db.insert(SellerContract.EntrySeller.TABLE_NAME, null, values);
+
+        Intent intent = new Intent(this, InsertSeller.class);
+        startActivity(intent);
+    }
+
 }
