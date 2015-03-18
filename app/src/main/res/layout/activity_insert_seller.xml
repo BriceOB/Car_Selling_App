@@ -93,7 +93,7 @@
             android:id="@+id/buttonSubmitSeller"
             android:layout_weight="1"
             android:layout_gravity="center_horizontal"
-            android:onClick="submit"
+            android:onClick="register"
             android:nestedScrollingEnabled="false" />
 
     </LinearLayout>

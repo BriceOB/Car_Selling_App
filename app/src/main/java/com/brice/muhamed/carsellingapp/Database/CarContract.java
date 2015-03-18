@@ -65,7 +65,7 @@ public final class CarContract {
                 _ID + " INTEGER PRIMARY KEY," +
                 COLUMN_NAME_Username + TEXT_TYPE + COMMA_SEP +
                 COLUMN_NAME_Password + TEXT_TYPE + COMMA_SEP +
-                COLUMN_NAME_idSeller + TEXT_TYPE + COMMA_SEP + " )";
+                COLUMN_NAME_idSeller + TEXT_TYPE +  " )";
 
         public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }

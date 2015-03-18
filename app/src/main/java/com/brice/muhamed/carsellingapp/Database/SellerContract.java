@@ -1,5 +1,6 @@
 package com.brice.muhamed.carsellingapp.Database;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
 
 /**
@@ -18,7 +19,7 @@ public final class SellerContract {
         public static final String COLUMN_NAME_USERNAME = "Username";
         public static final String COLUMN_NAME_PASSWORD = "Password";
 
-        private static final String TEXT_TYPE = " TEXT NOT NULL";
+        private static final String TEXT_TYPE = " TEXT";
         private static final String COMMA_SEP = ",";
 
         //Table `Car_Selling_Database`.`Seller`
@@ -26,11 +27,13 @@ public final class SellerContract {
                 TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY," +
                 COLUMN_NAME_USERNAME + TEXT_TYPE + COMMA_SEP +
-                COLUMN_NAME_PASSWORD + TEXT_TYPE + COMMA_SEP +
+                COLUMN_NAME_PASSWORD + TEXT_TYPE +
                 " )";
 
         public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
+
+
 }
 
 

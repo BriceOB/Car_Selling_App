@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,16 +15,20 @@ import android.widget.Toast;
 
 import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
 import com.brice.muhamed.carsellingapp.Database.SellerContract;
+import com.brice.muhamed.carsellingapp.Object.Seller;
+
+import java.lang.reflect.Array;
 
 
 public class InsertSeller extends ActionBarActivity {
 
-    private DatabaseHandler Dbh = new DatabaseHandler(getBaseContext());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_seller);
+
+        Log.d("On Insert: ", "Opening ..");
     }
 
 
@@ -54,16 +59,15 @@ public class InsertSeller extends ActionBarActivity {
 
 
 
+DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
+
+
+
         String username = ((TextView)findViewById(R.id.EditTextName)).toString();
-
-        SQLiteDatabase db = Dbh.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(SellerContract.EntrySeller.COLUMN_NAME_USERNAME, username);
-        values.put(SellerContract.EntrySeller.COLUMN_NAME_PASSWORD, "password");
+        String password = ((TextView)findViewById(R.id.EditTextP)).toString();
 
 
-        long RowId = db.insert(SellerContract.EntrySeller.TABLE_NAME, null, values);
+        dbh.addContact(new Seller(username,password));
 
         Intent intent = new Intent(this, InsertSeller.class);
         startActivity(intent);

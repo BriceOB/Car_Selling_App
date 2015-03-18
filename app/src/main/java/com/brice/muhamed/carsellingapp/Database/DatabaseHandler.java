@@ -1,8 +1,12 @@
 package com.brice.muhamed.carsellingapp.Database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import com.brice.muhamed.carsellingapp.Object.Seller;
 
 /**
  * Created by Brice on 16/03/2015.
@@ -22,18 +26,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
 
-  /*      //Table `Car_Selling_Database`.`Manufacturer`
-        String Create_Manufacturer_Table = "CREATE TABLE IF NOT EXISTS" + "Car_Selling_Database`.`Manufacturer` (" +
-                "  `idManufacturer` INT NOT NULL," +
-                "  `Brand` VARCHAR(45) NULL," +
-                "  PRIMARY KEY (`idManufacturer`))";
+  /*
 
-        //Table `Car_Selling_Database`.`Seller`
-        String Create_Seller_Table = "CREATE TABLE IF NOT EXISTS" + "Car_Selling_Database`.`Seller` (" +
-                "  `idSeller` INT NOT NULL," +
-                "  `Username` VARCHAR(45) NOT NULL," +
-                "  `Password` VARCHAR(45) NOT NULL," +
-                "  PRIMARY KEY (`idSeller`)))";
+
 
       */
 
@@ -43,8 +38,25 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // Drop older table if existed
+
+
         db.execSQL(SellerContract.EntrySeller.DELETE_TABLE);
 
        onCreate(db);
     }
+
+    public void addContact(Seller seller) {
+        Log.d("Add: ", "Add a new seller");
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(SellerContract.EntrySeller.COLUMN_NAME_USERNAME, seller.getUsername() );
+        values.put(SellerContract.EntrySeller.COLUMN_NAME_PASSWORD, seller.getPassword());
+
+        db.insert(SellerContract.EntrySeller.TABLE_NAME, null, values);
+        db.close();
+    }
+
+
 }
