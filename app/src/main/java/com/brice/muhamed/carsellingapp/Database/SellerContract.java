@@ -14,6 +14,7 @@ public final class SellerContract {
 
     public static abstract class EntrySeller implements BaseColumns {
         public static final String TABLE_NAME = "Seller";
+
         public static final String COLUMN_NAME_USERNAME = "Username";
         public static final String COLUMN_NAME_PASSWORD = "Password";
 

@@ -1,17 +1,22 @@
 package com.brice.muhamed.carsellingapp;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
 import com.brice.muhamed.carsellingapp.Database.SellerContract;
+import com.brice.muhamed.carsellingapp.Object.Seller;
 
 
 public class Login extends ActionBarActivity {
@@ -53,4 +58,50 @@ public class Login extends ActionBarActivity {
         Intent intent = new Intent(this, InsertSeller.class);
         startActivity(intent);
     }
+
+    public void login(View view) {
+
+        DatabaseHandler dbh = new DatabaseHandler(this.getBaseContext());
+
+        EditText txtUsername = (EditText)findViewById(R.id.editTextUserNameLogin);
+        EditText txtPassword = (EditText)findViewById(R.id.editTextPasswordLogin);
+        String username = txtUsername.getText().toString();
+        String password = txtPassword.getText().toString();
+
+        //checks fields are filled
+        if(TextUtils.isEmpty(username)){
+            txtUsername.setError("The username cannot be empty !");
+            return;
+        }
+        if(TextUtils.isEmpty(password)){
+            txtPassword.setError("The password cannot be empty !");
+            return;
+        }
+
+        Seller seller = dbh.checkUserPassword(username,password);
+
+        if(seller!=null){
+
+          ShowToast("Welcome " + seller.getUsername());
+
+            this.finish();
+            return;
+        }
+
+        ShowToast("Wrong Username/Password ");
+
+
+
+    }
+
+    public void ShowToast(CharSequence text){
+
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
+    }
+
 }

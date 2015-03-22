@@ -1,5 +1,6 @@
 package com.brice.muhamed.carsellingapp;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -57,13 +58,19 @@ public class InsertSeller extends ActionBarActivity {
 
         DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
 
-        String username = ((TextView)findViewById(R.id.EditTextName)).toString();
-        String password = ((TextView)findViewById(R.id.editTextPassword)).toString();
+        String username = ((TextView)findViewById(R.id.EditTextName)).getText().toString();
+        String password = ((TextView)findViewById(R.id.editTextPassword)).getText().toString();
+
+
 
         dbh.addContact(new Seller(username,password));
 
-        Intent intent = new Intent(this, InsertSeller.class);
-        startActivity(intent);
+
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Contact successfully added", Toast.LENGTH_SHORT);
+        toast.show();
+
+        this.finish();
     }
 
 }

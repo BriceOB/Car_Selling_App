@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.brice.muhamed.carsellingapp.Object.Seller;
 
@@ -17,7 +18,7 @@ import java.util.List;
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME =  "Car_Selling_Database.db";
 
 
@@ -48,7 +49,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     public void addContact(Seller seller) {
-        Log.d("Add: ", "Add a new seller");
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -58,6 +58,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.insert(SellerContract.EntrySeller.TABLE_NAME, null, values);
         db.close();
+
+
     }
 
 
@@ -88,6 +90,34 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(ManufacturerContract.EntryManufacturer.COLUMN_NAME_IDMANUFACTURER, 1);
 
         db.insert(ManufacturerContract.EntryManufacturer.TABLE_NAME, null, values);
+
+    }
+
+    public Seller checkUserPassword(String Username, String Password){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        Cursor c = db.query(SellerContract.EntrySeller.TABLE_NAME,
+                new String[] { SellerContract.EntrySeller.COLUMN_NAME_USERNAME, SellerContract.EntrySeller.COLUMN_NAME_PASSWORD },
+                SellerContract.EntrySeller.COLUMN_NAME_USERNAME + " = '" + Username + "' AND " +   SellerContract.EntrySeller.COLUMN_NAME_PASSWORD + " = '" + Password + "'" ,
+               null,
+                null,
+                null,
+                null);
+
+        if ( c.getCount() ==0){
+            return null;
+        }
+
+//return false if no users was found
+
+            c.moveToFirst();
+            Seller seller = new Seller(Username,Password);
+            return seller;
+
+
+
 
     }
 
