@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 4;
     public static final String DATABASE_NAME =  "Car_Selling_Database.db";
 
 
@@ -33,6 +33,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         db.execSQL(SellerContract.EntrySeller.CREATE_SELLER_TABLE);
 
+        db.execSQL(CarContract.EntryCar.CREATE_TABLE);
+
 
         setDefaultDb(db);
     }
@@ -44,6 +46,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(ManufacturerContract.EntryManufacturer.DELETE_TABLE);
 
         db.execSQL(SellerContract.EntrySeller.DELETE_TABLE);
+
+        db.execSQL(CarContract.EntryCar.DELETE_TABLE);
+
 
         onCreate(db);
     }
@@ -87,7 +92,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND, "test" );
-        values.put(ManufacturerContract.EntryManufacturer.COLUMN_NAME_IDMANUFACTURER, 1);
+       // values.put(ManufacturerContract.EntryManufacturer.COLUMN_NAME_IDMANUFACTURER, 1);
 
         db.insert(ManufacturerContract.EntryManufacturer.TABLE_NAME, null, values);
 
@@ -116,8 +121,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             Seller seller = new Seller(Username,Password);
             return seller;
 
+    }
+
+    public void InsertCarInfos(String model, int SellerId, int ManufacturerId){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(CarContract.EntryCar.COLUMN_NAME_Model, model);
+        values.put(CarContract.EntryCar.COLUMN_NAME_ManufacturerId,SellerId);
+        values.put(CarContract.EntryCar.COLUMN_NAME_SellerId,ManufacturerId );
 
 
+        // Inserting Row
+        db.insert(CarContract.EntryCar.TABLE_NAME, null, values);
+        db.close(); // Closing database connection
 
     }
 

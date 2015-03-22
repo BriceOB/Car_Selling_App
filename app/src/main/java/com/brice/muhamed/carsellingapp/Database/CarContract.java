@@ -49,18 +49,26 @@ public final class CarContract {
 
     public static abstract class EntryCar implements BaseColumns {
         public static final String TABLE_NAME       = "Car";
-        public static final String COLUMN_NAME_Username = "Username";
-        public static final String COLUMN_NAME_Password = "Password";
-        public static final String COLUMN_NAME_idSeller = "idSeller";
+        public static final String COLUMN_NAME_Model = "Model";
+        public static final String COLUMN_NAME_ManufacturerId = "Manufacturer_idManufacturer";
+        public static final String COLUMN_NAME_SellerId = "Seller_idSeller";
 
         private static final String TEXT_TYPE          = " TEXT";
+        private static final String INT_TYPE          = " INTEGER";
         private static final String COMMA_SEP          = ",";
         public static final String CREATE_TABLE = "CREATE TABLE " +
                 TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY," +
-                COLUMN_NAME_Username + TEXT_TYPE + COMMA_SEP +
-                COLUMN_NAME_Password + TEXT_TYPE + COMMA_SEP +
-                COLUMN_NAME_idSeller + TEXT_TYPE +  " )";
+
+                COLUMN_NAME_SellerId + INT_TYPE + COMMA_SEP +
+                COLUMN_NAME_ManufacturerId + INT_TYPE + COMMA_SEP +
+
+                COLUMN_NAME_Model + TEXT_TYPE +  COMMA_SEP +
+
+                " FOREIGN KEY(" + COLUMN_NAME_SellerId + ") REFERENCES " + SellerContract.EntrySeller.TABLE_NAME + "(" + SellerContract.EntrySeller._ID + ")" + COMMA_SEP +
+                " FOREIGN KEY(" + COLUMN_NAME_ManufacturerId + ") REFERENCES " + ManufacturerContract.EntryManufacturer.TABLE_NAME + "(" + ManufacturerContract.EntryManufacturer._ID + ")"
+
+                +" )";
 
         public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }

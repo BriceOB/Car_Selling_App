@@ -91,14 +91,25 @@ public class HomePage extends ActionBarActivity {
     }
 
     public void insert(MenuItem item) {
+
+        Intent intent = new Intent(this, InsertCarDetails.class);
+        startActivity(intent);
+
     }
 
     public void myCars(MenuItem item) {
+
+
     }
 
     public void settings(MenuItem item) {
+
+
     }
 
     public void about(MenuItem item) {
+
+        Intent intent = new Intent(this, About.class);
+        startActivity(intent);
     }
 }

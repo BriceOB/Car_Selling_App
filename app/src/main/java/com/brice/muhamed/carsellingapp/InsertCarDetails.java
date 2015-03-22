@@ -8,11 +8,17 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
 
 
 public class InsertCarDetails extends ActionBarActivity {
+
+    private Spinner spinnerManufacture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +29,7 @@ public class InsertCarDetails extends ActionBarActivity {
         ArrayAdapter<CharSequence> adapterManufacture = ArrayAdapter.createFromResource(this, R.array.manufacturerList, R.layout.my_spinner_layout);
         adapterManufacture.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        Spinner spinnerManufacture = (Spinner)findViewById(R.id.spinnerManufacture);
+        spinnerManufacture = (Spinner)findViewById(R.id.spinnerManufacture);
         spinnerManufacture.setAdapter(adapterManufacture);
 
         ArrayAdapter<CharSequence> adapterFuel = ArrayAdapter.createFromResource(this, R.array.fuelList, R.layout.my_spinner_layout);
@@ -60,6 +66,21 @@ public class InsertCarDetails extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void SubmitCarDetails(View view){
+
+      String Manufacturer = spinnerManufacture.getSelectedItem().toString();
+
+        DatabaseHandler dbh = new DatabaseHandler(this.getBaseContext());
+
+        dbh.InsertCarInfos("ModelTest", 2, 1);
+
+
+        Toast toast = Toast.makeText(getApplicationContext(), "Car successfully added", Toast.LENGTH_SHORT);
+        toast.show();
+
+        this.finish();
     }
 }
 

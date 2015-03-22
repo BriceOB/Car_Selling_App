@@ -112,7 +112,8 @@
             android:text="@string/submit"
             android:id="@+id/buttonSubmitCar"
             android:layout_weight="1"
-            android:layout_gravity="center_horizontal"/>
+            android:layout_gravity="center_horizontal"
+            android:onClick="SubmitCarDetails" />
 
     </LinearLayout>
 </ScrollView>
