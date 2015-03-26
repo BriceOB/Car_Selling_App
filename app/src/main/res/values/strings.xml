@@ -5,10 +5,10 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
     <string name="title_activity_cars_for_sale">CarsForSale</string>
-    <string name="Manufacturer">Manufacturer</string>
+    <string name="Manufacturer">Brand</string>
     <string name="Model">Model</string>
     <string name="Year">Year</string>
-    <string name="Kilometers">Kilometers</string>
+    <string name="Kilometers">Km</string>
     <string name="Price">Price</string>
     <string name="Order">Order</string>
     <string name="From">From</string>

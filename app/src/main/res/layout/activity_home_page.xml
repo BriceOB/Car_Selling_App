@@ -19,14 +19,12 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/Manufacturer"
-                android:id="@+id/textViewManufacturer"
-                android:layout_column="0" />
+                android:id="@+id/textViewManufacturer"/>
 
             <Spinner
                 android:layout_width="87dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinnerManufacturer"
-                android:layout_column="2" />
+                android:id="@+id/spinnerManufacturer" />
 
         </TableRow>
 
@@ -38,14 +36,12 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/Model"
-                android:id="@+id/textViewModel"
-                android:layout_column="0" />
+                android:id="@+id/textViewModel"/>
 
             <Spinner
                 android:layout_width="84dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/spinnerModel"
-                android:layout_column="2" />
+                android:id="@+id/spinnerModel"/>
         </TableRow>
         <TableRow>
 
@@ -54,8 +50,34 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/Year"
-                android:id="@+id/textViewYear"
-                android:layout_column="0" />
+                android:id="@+id/textViewYear"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/From"
+                android:id="@+id/textViewYearFrom"/>
+
+            <EditText
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/editTextYearFrom"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/To"
+                android:id="@+id/TextViewYearTo"/>
+
+            <EditText
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/editTextYearTo"
+                android:inputType="number" />
 
         </TableRow>
         <TableRow>
@@ -65,23 +87,20 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/Kilometers"
-                android:id="@+id/textViewKm"
-                android:layout_column="0" />
+                android:id="@+id/textViewKm" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/From"
-                android:id="@+id/textViewKmFrom"
-                android:layout_column="1" />
+                android:id="@+id/textViewKmFrom"/>
 
             <EditText
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextKmFrom"
-                android:layout_column="2"
                 android:inputType="number" />
 
             <TextView
@@ -89,15 +108,13 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/To"
-                android:id="@+id/textViewKmTo"
-                android:layout_column="3" />
+                android:id="@+id/textViewKmTo"/>
 
             <EditText
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextKmTo"
-                android:layout_column="4"
                 android:inputType="number" />
 
         </TableRow>
@@ -108,8 +125,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/Price"
-                android:id="@+id/textViewPrice"
-                android:layout_column="0" />
+                android:id="@+id/textViewPrice"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -124,7 +140,6 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextPriceFrom"
-                android:layout_column="2"
                 android:inputType="number" />
 
             <TextView
@@ -132,15 +147,13 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/To"
-                android:id="@+id/textViewPriceTo"
-                android:layout_column="3" />
+                android:id="@+id/textViewPriceTo"/>
 
             <EditText
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextPriceTo"
-                android:layout_column="4"
                 android:inputType="number" />
 
         </TableRow>
@@ -152,60 +165,22 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="@string/Order"
-                android:id="@+id/textViewOrder"
-                android:layout_column="0" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/From"
-                android:id="@+id/textViewYearFrom"
-                android:layout_column="1" />
-
-            <EditText
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/editTextYearFrom"
-                android:layout_column="2" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/To"
-                android:id="@+id/textViewYearTo"
-                android:layout_column="3" />
-
-            <EditText
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:ems="10"
-                android:id="@+id/editTextYearTo"
-                android:layout_column="4" />
+                android:id="@+id/textViewOrder"/>
+            <Spinner
+            android:layout_width="89dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerOrder"/>
 
         </TableRow>
         <TableRow>
 
-
-            <Spinner
-                android:layout_width="89dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/spinnerOrder"
-                android:layout_column="2" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Search"
                 android:id="@+id/buttonSearch"
-                android:layout_column="2"
                 android:onClick="SearchCars" />
-
-
         </TableRow>
 
 
