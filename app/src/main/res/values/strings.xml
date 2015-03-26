@@ -30,9 +30,9 @@
         <item>Chevrolet </item>
     </string-array>
     <string-array name="ListOrder">
-        <item>Date Announce</item>
+        <item>Date</item>
         <item>Price</item>
-        <item>Kilometers</item>
+        <item>Km</item>
     </string-array>
 
     <string name="drawer_open">Open menu</string>
