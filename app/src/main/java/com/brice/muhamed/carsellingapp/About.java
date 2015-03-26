@@ -8,7 +8,7 @@ import android.view.MenuItem;
 
 public class About extends ActionBarActivity {
 
-    //About
+    //this is about
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
