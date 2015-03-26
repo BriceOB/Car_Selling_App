@@ -61,11 +61,7 @@ public class InsertSeller extends ActionBarActivity {
         String username = ((TextView)findViewById(R.id.EditTextName)).getText().toString();
         String password = ((TextView)findViewById(R.id.editTextPassword)).getText().toString();
 
-
-
-        dbh.addContact(new Seller(username,password));
-
-
+        dbh.addContact(username,password);
 
         Toast toast = Toast.makeText(getApplicationContext(), "Contact successfully added", Toast.LENGTH_SHORT);
         toast.show();

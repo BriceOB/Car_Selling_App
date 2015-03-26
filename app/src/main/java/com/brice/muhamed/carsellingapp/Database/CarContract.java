@@ -13,15 +13,10 @@ public final class CarContract {
 
 
 
-
-
 /*  //Table `Car_Selling_Database`.`Car`
         String Create_Car_Table = "CREATE TABLE IF NOT EXISTS" + "Car_Selling_Database`.`Car` (\n" +
-                "  `idCar` INT NOT NULL,\n" +
-                "  `Model` VARCHAR(45) NULL,\n" +
-                "  `Kilometers` INT NULL,\n" +
-                "  `Fuel` VARCHAR(45) NULL,\n" +
-                "  `Doors` INT NULL,\n" +
+
+
                 "  `HP` INT NULL,\n" +
                 "  `Weight` INT NULL,\n" +
                 "  `Price` INT NULL,\n" +
@@ -48,28 +43,58 @@ public final class CarContract {
                 */
 
     public static abstract class EntryCar implements BaseColumns {
+
         public static final String TABLE_NAME       = "Car";
+
+        //Column name
         public static final String COLUMN_NAME_Model = "Model";
+        public static final String COLUMN_NAME_Kilometers = "Kilometers";
+        public static final String COLUMN_NAME_Fuel = "Fuel";
+        public static final String COLUMN_NAME_Doors = "Doors";
+        public static final String COLUMN_NAME_Hp = "Hp";
+        public static final String COLUMN_NAME_Weight = "Weight";
+        public static final String COLUMN_NAME_Price = "Price";
+        public static final String COLUMN_NAME_Description = "Description";
+        public static final String COLUMN_NAME_PhotoPath = "PhotoPath";
+        public static final String COLUMN_NAME_CreationDate = "CreationDate";
+        public static final String COLUMN_NAME_CarDate = "CarDate";
+        public static final String COLUMN_NAME_ToSell = "ToSell";
+
+        //Foreign Key
         public static final String COLUMN_NAME_ManufacturerId = "Manufacturer_idManufacturer";
         public static final String COLUMN_NAME_SellerId = "Seller_idSeller";
 
+        //Type
         private static final String TEXT_TYPE          = " TEXT";
         private static final String INT_TYPE          = " INTEGER";
         private static final String COMMA_SEP          = ",";
+
+        //Table creation
         public static final String CREATE_TABLE = "CREATE TABLE " +
                 TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY," +
 
                 COLUMN_NAME_SellerId + INT_TYPE + COMMA_SEP +
                 COLUMN_NAME_ManufacturerId + INT_TYPE + COMMA_SEP +
-
                 COLUMN_NAME_Model + TEXT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_Kilometers + INT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_Fuel + TEXT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_Doors + INT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_Hp + INT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_Weight + INT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_Price + INT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_Description + TEXT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_PhotoPath + TEXT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_CreationDate + TEXT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_CarDate + TEXT_TYPE +  COMMA_SEP +
+                COLUMN_NAME_ToSell + TEXT_TYPE +  COMMA_SEP +
 
                 " FOREIGN KEY(" + COLUMN_NAME_SellerId + ") REFERENCES " + SellerContract.EntrySeller.TABLE_NAME + "(" + SellerContract.EntrySeller._ID + ")" + COMMA_SEP +
                 " FOREIGN KEY(" + COLUMN_NAME_ManufacturerId + ") REFERENCES " + ManufacturerContract.EntryManufacturer.TABLE_NAME + "(" + ManufacturerContract.EntryManufacturer._ID + ")"
 
                 +" )";
 
+        //Delete table
         public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
 }

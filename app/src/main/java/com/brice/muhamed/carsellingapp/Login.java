@@ -3,6 +3,7 @@ package com.brice.muhamed.carsellingapp;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -82,7 +83,15 @@ public class Login extends ActionBarActivity {
 
         if(seller!=null){
 
-          ShowToast("Welcome " + seller.getUsername());
+
+
+            //Set shared preference to the user id
+            SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPref.edit();
+            editor.putInt("Id", seller.getId());
+            editor.commit();
+
+            ShowToast("Welcome " + seller.getUsername() + " " + seller.getId());
 
             this.finish();
             return;

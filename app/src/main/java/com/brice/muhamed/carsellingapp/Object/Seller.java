@@ -5,11 +5,13 @@ package com.brice.muhamed.carsellingapp.Object;
  */
 public class Seller {
 
+    private int id;
     private String username;
     private String password;
 
-    public Seller(String username, String password){
+    public Seller(int id, String username, String password){
 
+        this.id = id;
         this.username = username;
         this.password = password;
 
@@ -21,5 +23,9 @@ public class Seller {
 
     public String getPassword() {
         return password;
+    }
+
+    public int getId() {
+        return id;
     }
 }

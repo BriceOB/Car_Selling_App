@@ -18,13 +18,14 @@ public class ListCarsForSale extends ArrayAdapter<String> {
     private final String[] infos;
     private final Integer[] imageId;
 
-    public ListCarsForSale(Activity context,
-                           String[] infos, Integer[] imageId) {
+    public ListCarsForSale(Activity context, String[] infos, Integer[] imageId) {
         super(context, R.layout.list_searched_cars, infos);
         this.context = context;
         this.infos = infos;
         this.imageId = imageId;
     }
+
+
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {

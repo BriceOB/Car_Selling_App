@@ -26,7 +26,7 @@ public class HomePage extends ActionBarActivity {
 
         DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
 
-       // Spinner Manufacturer
+        // Spinner Manufacturer
         Spinner spinner = (Spinner) findViewById(R.id.spinnerManufacturer);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getManufacturer());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -37,6 +37,12 @@ public class HomePage extends ActionBarActivity {
         ArrayAdapter<CharSequence> adapterOrder = ArrayAdapter.createFromResource(this, R.array.ListOrder, R.layout.my_spinner_layout);
         adapterOrder.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerOrder.setAdapter(adapterOrder);
+
+        //Spinner Model
+        Spinner spinnerModel = (Spinner) findViewById(R.id.spinnerModel);
+        ArrayAdapter<String> adapterModel = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getModel());
+        adapterModel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerModel.setAdapter(adapterModel);
     }
 
 
@@ -98,7 +104,12 @@ public class HomePage extends ActionBarActivity {
     }
 
     public void myCars(MenuItem item) {
+        Intent intent = new Intent(this, CarsForSale.class);
 
+        String Parameters = "MyCars";
+
+        intent.putExtra(EXTRA_MESSAGE, Parameters);
+        startActivity(intent);
 
     }
 

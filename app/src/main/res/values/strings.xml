@@ -76,13 +76,13 @@
     <string name="seller">Seller</string>
     <string name="phone">Phone</string>
     <string name="email">E-mail</string>
+    <string name="ToSell">ToSell</string>
     <string name="colorText">#FFFFFFFF</string>
     <string name="title_activity_insert_car_details">Insert_car_details</string>
 
     <string name="submit">Submit</string>
 
     <string-array name="manufacturerList">
-        <item>Brand</item>
         <item>Audi</item>
         <item>BMW</item>
         <item>Mercedes-Benz</item>

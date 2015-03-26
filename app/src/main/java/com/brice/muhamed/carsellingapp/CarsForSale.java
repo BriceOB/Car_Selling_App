@@ -16,7 +16,7 @@ public class CarsForSale extends ActionBarActivity {
 
     ListView list;
 
-    String[] web = {
+    String[] Cars = {
             "TEST"
     } ;
     Integer[] imageId = {
@@ -35,8 +35,13 @@ public class CarsForSale extends ActionBarActivity {
 
         //Get intent from search page
         Intent intent = getIntent();
-        //String[] message = intent.getStringArrayExtra(HomePage.EXTRA_MESSAGE);
+        String message = intent.getStringExtra(HomePage.EXTRA_MESSAGE);
 
+        if(message.equals("MyCars")){
+
+            //   Cars = dbh.getMyCars();
+
+        }
 
 
         //Search
@@ -45,14 +50,14 @@ public class CarsForSale extends ActionBarActivity {
 
         //http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html
         ListCarsForSale adapter = new
-                ListCarsForSale(CarsForSale.this, web, imageId);
+                ListCarsForSale(CarsForSale.this, Cars, imageId);
         list=(ListView)findViewById(R.id.listViewCarsSearched);
         list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                Toast.makeText(CarsForSale.this, "Element: " + web[+position], Toast.LENGTH_SHORT).show();
+                Toast.makeText(CarsForSale.this, "Element: " + Cars[+position], Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(CarsForSale.this, ShowCarDetails.class);
                 startActivity(intent);
