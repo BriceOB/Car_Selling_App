@@ -257,8 +257,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND + " = '" + Brand + "' AND " +
                       ManufacturerContract.EntryManufacturer.TABLE_NAME+"."+ ManufacturerContract.EntryManufacturer._ID + " = '" + CarContract.EntryCar.COLUMN_NAME_ManufacturerId + "' AND " +
                         CarContract.EntryCar.COLUMN_NAME_ToSell + " = '" + "1" + "' AND " +
-                        CarContract.EntryCar.COLUMN_NAME_CarDate.substring(CarContract.EntryCar.COLUMN_NAME_CarDate.length()-4,CarContract.EntryCar.COLUMN_NAME_CarDate.length())+ " >= '" + Year + "' AND " +
-                        CarContract.EntryCar.COLUMN_NAME_CarDate.substring(CarContract.EntryCar.COLUMN_NAME_CarDate.length()-4,CarContract.EntryCar.COLUMN_NAME_CarDate.length()) + " <= '" + YearTo + "' AND " +
+                        "substr("+CarContract.EntryCar.COLUMN_NAME_CarDate+",7,4)"+ " >= '" + Year + "' AND " +
+                        "substr("+ CarContract.EntryCar.COLUMN_NAME_CarDate+",7,4)" + " <= '" + YearTo + "' AND " +
                         CarContract.EntryCar.COLUMN_NAME_Kilometers+ " >= '" + KmFrom + "' AND " +
                         CarContract.EntryCar.COLUMN_NAME_Kilometers+ " <= '" + KmTo + "' AND " +
                         CarContract.EntryCar.COLUMN_NAME_Price+ " >= '" + PriceFrom + "' AND " +
