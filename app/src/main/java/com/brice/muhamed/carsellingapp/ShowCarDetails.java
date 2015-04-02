@@ -1,5 +1,6 @@
 package com.brice.muhamed.carsellingapp;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +13,10 @@ public class ShowCarDetails extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_car_details);
+
+        //Get intent from search page
+        Intent intent = getIntent();
+        String CarId = intent.getStringExtra(HomePage.EXTRA_MESSAGE);
     }
 
 

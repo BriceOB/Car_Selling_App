@@ -221,7 +221,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
 
-        String MY_QUERY = "SELECT DISTINCT "+ CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath + " FROM "+
+        String MY_QUERY = "SELECT DISTINCT "+ CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath +"," + CarContract.EntryCar.TABLE_NAME + "."+CarContract.EntryCar._ID+" FROM "+
                 CarContract.EntryCar.TABLE_NAME + " c , " + ManufacturerContract.EntryManufacturer.TABLE_NAME +" m , "+  SellerContract.EntrySeller.TABLE_NAME + " s WHERE c." + CarContract.EntryCar.COLUMN_NAME_ManufacturerId + " = m._id AND c." + CarContract.EntryCar.COLUMN_NAME_SellerId + " = " + UserId
 
 ;
@@ -231,7 +231,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
         if(cur.moveToFirst()) {
-            String[][] Model = new String[cur.getCount()][5];
+            String[][] Model = new String[cur.getCount()][6];
 
             for(int row = 0; row< Model.length;row++){
                 for(int column = 0 ;column < Model[0].length;column++){
@@ -253,18 +253,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor c = db.query(ManufacturerContract.EntryManufacturer.TABLE_NAME + ", " + CarContract.EntryCar.TABLE_NAME,
-                new String[] { "*"},
+                new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath + ", " + CarContract.EntryCar.TABLE_NAME + "."+CarContract.EntryCar._ID},
                 ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND + " = '" + Brand + "' AND " +
-                      ManufacturerContract.EntryManufacturer.TABLE_NAME+"."+ ManufacturerContract.EntryManufacturer._ID + " = '" + CarContract.EntryCar.COLUMN_NAME_ManufacturerId + "' AND " +
+                      ManufacturerContract.EntryManufacturer.TABLE_NAME+"."+ ManufacturerContract.EntryManufacturer._ID + " = " + CarContract.EntryCar.TABLE_NAME+ "." +CarContract.EntryCar.COLUMN_NAME_ManufacturerId + " AND " +
                         CarContract.EntryCar.COLUMN_NAME_ToSell + " = '" + "1" + "' AND " +
-                        "substr("+CarContract.EntryCar.COLUMN_NAME_CarDate+",7,4)"+ " >= '" + Year + "' AND " +
-                        "substr("+ CarContract.EntryCar.COLUMN_NAME_CarDate+",7,4)" + " <= '" + YearTo + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_CarDate+ " >= '" + Year + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_CarDate + " <= '" + YearTo + "' AND " +
                         CarContract.EntryCar.COLUMN_NAME_Kilometers+ " >= '" + KmFrom + "' AND " +
                         CarContract.EntryCar.COLUMN_NAME_Kilometers+ " <= '" + KmTo + "' AND " +
                         CarContract.EntryCar.COLUMN_NAME_Price+ " >= '" + PriceFrom + "' AND " +
                         CarContract.EntryCar.COLUMN_NAME_Price+ " <= '" + PriceTo + "' AND " +
-
-                ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND + " = '" + Brand + "'" ,
+                   CarContract.EntryCar.COLUMN_NAME_Model + " = '" + Model + "'" ,
                 null,
                 null,
                 null,
@@ -274,7 +273,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
         if(c.moveToFirst()) {
-            String[][] result = new String[c.getCount()][5];
+            String[][] result = new String[c.getCount()][6];
 
             for(int row = 0; row< result.length;row++){
                 for(int column = 0 ;column < result[0].length;column++){

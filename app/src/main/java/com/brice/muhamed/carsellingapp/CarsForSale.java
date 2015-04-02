@@ -19,6 +19,8 @@ import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
 public class CarsForSale extends ActionBarActivity {
 
     ListView list;
+    public final static String EXTRA_MESSAGE = "com.brice.muhamed.EXTRA_MESSAGE";
+
 
     String[][] Cars ;
     Integer[] imageId ;
@@ -64,9 +66,10 @@ public class CarsForSale extends ActionBarActivity {
                                             @Override
                                             public void onItemClick(AdapterView<?> parent, View view,
                                                                     int position, long id) {
-                                                Toast.makeText(CarsForSale.this, "Element: " + Cars[position][0], Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(CarsForSale.this, "Element: " + Cars[position][5], Toast.LENGTH_SHORT).show();
 
                                                 Intent intent = new Intent(CarsForSale.this, ShowCarDetails.class);
+                                                intent.putExtra(EXTRA_MESSAGE, new String[]{Cars[position][5]});
                                                 startActivity(intent);
 
                                             }
