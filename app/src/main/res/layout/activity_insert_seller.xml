@@ -15,6 +15,38 @@
 
         <TextView
             android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/TextViewAccount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dip"
+            android:layout_weight="1"
+            android:text="@string/account"
+            android:background="#ffff0001"
+            android:textColor="#ffffffff" />
+
+        <EditText
+            android:id="@+id/EditTextName"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/Username"
+            android:inputType="textPersonName"
+            android:textColor="#ffffffff"
+            android:textColorHint="#ffcdcdcd" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/editTextPassword"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:hint="@string/Password"
+            android:textColorHint="#ffcdcdcd" />
+
+        <TextView
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/TextViewSeller"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -24,9 +56,8 @@
             android:background="#ffff0001"
             android:textColor="#ffffffff" />
 
-
         <EditText
-            android:id="@+id/EditTextName"
+            android:id="@+id/EditTextFirstname"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -86,17 +117,6 @@
             android:textColor="#ffffffff"
             android:textColorHint="#ffcdcdcd"/>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:ems="10"
-            android:id="@+id/editTextPassword"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:hint="@string/Password"
-            android:textColorHint="#ffcdcdcd" />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,8 +124,7 @@
             android:id="@+id/buttonSubmitSeller"
             android:layout_weight="1"
             android:layout_gravity="center_horizontal"
-            android:onClick="register"
-            android:nestedScrollingEnabled="false" />
+            android:onClick="register" />
 
     </LinearLayout>
 </ScrollView>
