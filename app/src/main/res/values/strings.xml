@@ -30,8 +30,8 @@
         <item>Chevrolet </item>
     </string-array>
     <string-array name="ListOrder">
-        <item>Date</item>
-        <item>Price</item>
+        <item>Datum</item>
+        <item>Preis</item>
         <item>Km</item>
     </string-array>
 
@@ -82,17 +82,10 @@
 
     <string name="submit">Submit</string>
 
-    <string-array name="manufacturerList">
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Mercedes-Benz</item>
-        <item>Volkswagen</item>
-    </string-array>
-
     <string-array name="gearboxList">
-        <item>Gearbox</item>
-        <item>Automatic</item>
-        <item>Manual</item>
+        <item>Getriebeart</item>
+        <item>Automatikgetriebe</item>
+        <item>Schaltgetriebe</item>
     </string-array>
 
     <string-array name="fuelList">
