@@ -1,12 +1,15 @@
 package com.brice.muhamed.carsellingapp;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.File;
 
 /**
  * Created by Brice on 07/03/2015.
@@ -15,26 +18,37 @@ import android.widget.TextView;
 public class ListCarsForSale extends ArrayAdapter<String> {
 
     private final Activity context;
-    private final String[] infos;
-    private final Integer[] imageId;
+    private final String[][] Cars;
 
-    public ListCarsForSale(Activity context, String[] infos, Integer[] imageId) {
-        super(context, R.layout.list_searched_cars, infos);
+    public ListCarsForSale(Activity context, String[][] Cars) {
+        super(context, R.layout.list_searched_cars, new String[Cars.length]);
         this.context = context;
-        this.infos = infos;
-        this.imageId = imageId;
+        this.Cars = Cars;
     }
-
-
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
+
+
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.list_searched_cars, null, true);
+
         TextView textCarName = (TextView) rowView.findViewById(R.id.textViewCarName);
+        textCarName.setText(Cars[position][0]);
+
+        TextView textCarModel = (TextView) rowView.findViewById(R.id.textViewCarModel);
+        textCarModel.setText(Cars[position][1]);
+
+        TextView textCarDescription = (TextView) rowView.findViewById(R.id.textViewCarDescription);
+        textCarDescription.setText(Cars[position][2]);
+
         ImageView imageViewCar = (ImageView) rowView.findViewById(R.id.imageViewCar);
-        textCarName.setText(infos[position]);
-        imageViewCar.setImageResource(imageId[position]);
+
+        if(Cars[position][4]!=null){
+            imageViewCar.setImageURI(Uri.fromFile(new File(Cars[position][4])));
+        }
+        imageViewCar.setImageResource(R.drawable.ic_no_picture);
+
         return rowView;
     }
 

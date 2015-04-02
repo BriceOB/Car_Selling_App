@@ -106,15 +106,15 @@ public class Car {
     public String getPhotoPath() {
         return PhotoPath;
     }
-    /*
-        public Date getCreationDate() {
+
+        public String getCreationDate() {
             return CreationDate;
         }
 
-        public Date getCarDate() {
+        public String getCarDate() {
             return CarDate;
         }
-    */
+
     public int getToSell() {
         return ToSell;
     }

@@ -1,6 +1,8 @@
 package com.brice.muhamed.carsellingapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -11,59 +13,76 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
+
 
 public class CarsForSale extends ActionBarActivity {
 
     ListView list;
 
-    String[] Cars = {
-            "TEST"
-    } ;
-    Integer[] imageId = {
-            R.mipmap.ic_launcher,
-
-    };
-
+    String[][] Cars ;
+    Integer[] imageId ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cars_for_sale);
 
+        DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
+
         //enable the app icon as the up button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-
         //Get intent from search page
         Intent intent = getIntent();
-        String message = intent.getStringExtra(HomePage.EXTRA_MESSAGE);
+        String[] message = intent.getStringArrayExtra(HomePage.EXTRA_MESSAGE);
 
-        if(message.equals("MyCars")){
+        if(message[0].equals("MyCars")){
 
-            //   Cars = dbh.getMyCars();
+            SharedPreferences sharedPref = this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
+            int UserId = sharedPref.getInt("com.brice.muhamed.carsellingapp.Id", 0);
 
+            Toast.makeText(getApplicationContext(), "Id : "+UserId, Toast.LENGTH_SHORT).show();
+
+            Cars = dbh.getMyCars(UserId);
+
+
+        }
+        else{
+           Cars = dbh.GetResultSearch(message[0],message[1],message[2],message[3],message[4],message[5],message[6],message[7],message[8]);
         }
 
 
-        //Search
+        if(Cars!=null){
 
+            //http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html
 
+            ListCarsForSale adapter = new
+                    ListCarsForSale(CarsForSale.this,Cars);
+            list=(ListView)findViewById(R.id.listViewCarsSearched);
+            list.setAdapter(adapter);
+            list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                            @Override
+                                            public void onItemClick(AdapterView<?> parent, View view,
+                                                                    int position, long id) {
+                                                Toast.makeText(CarsForSale.this, "Element: " + Cars[position][0], Toast.LENGTH_SHORT).show();
 
-        //http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html
-        ListCarsForSale adapter = new
-                ListCarsForSale(CarsForSale.this, Cars, imageId);
-        list=(ListView)findViewById(R.id.listViewCarsSearched);
-        list.setAdapter(adapter);
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(CarsForSale.this, "Element: " + Cars[+position], Toast.LENGTH_SHORT).show();
+                                                Intent intent = new Intent(CarsForSale.this, ShowCarDetails.class);
+                                                startActivity(intent);
 
-                Intent intent = new Intent(CarsForSale.this, ShowCarDetails.class);
-                startActivity(intent);
+                                            }
+                                        }
+            );
+        }
+        else{
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
 
-            }
-        });
+            Toast toast = Toast.makeText(context, "no car available", duration);
+            toast.show();
+
+            finish();
+        }
+
 
 
 

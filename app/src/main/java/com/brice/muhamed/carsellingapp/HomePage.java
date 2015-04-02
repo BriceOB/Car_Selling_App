@@ -18,19 +18,24 @@ public class HomePage extends ActionBarActivity {
 
     private String [] LastSearchParameters;
     public final static String EXTRA_MESSAGE = "com.brice.muhamed.EXTRA_MESSAGE";
+    private   ArrayAdapter<String> adapterModel;
+    private DatabaseHandler dbh;
+    private ArrayAdapter<String> adapterManufacturer;
+    private Spinner spinnerManufacturer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
+       dbh  = new DatabaseHandler(getBaseContext());
 
         // Spinner Manufacturer
-        Spinner spinner = (Spinner) findViewById(R.id.spinnerManufacturer);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getManufacturer());
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        spinnerManufacturer = (Spinner) findViewById(R.id.spinnerManufacturer);
+        adapterManufacturer = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getManufacturer());
+        adapterManufacturer.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerManufacturer.setAdapter(adapterManufacturer);
 
         //Spinner Order
         Spinner spinnerOrder = (Spinner) findViewById(R.id.spinnerOrder);
@@ -40,7 +45,7 @@ public class HomePage extends ActionBarActivity {
 
         //Spinner Model
         Spinner spinnerModel = (Spinner) findViewById(R.id.spinnerModel);
-        ArrayAdapter<String> adapterModel = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getModel());
+        adapterModel = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getModel(spinnerManufacturer.getSelectedItem().toString()));
         adapterModel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerModel.setAdapter(adapterModel);
     }
@@ -68,23 +73,27 @@ public class HomePage extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void updateModel(){
+        Spinner spinnerModel = (Spinner) findViewById(R.id.spinnerModel);
+        adapterModel = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getModel(spinnerManufacturer.getSelectedItem().toString()));
+        adapterModel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerModel.setAdapter(adapterModel);
+    }
+
     public void SearchCars(View view) {
 
         Intent intent = new Intent(this, CarsForSale.class);
 
-        String[] SearchParameters = {"Manufacturer",
-                //((Spinner)findViewById(R.id.spinnerManufacturer)).getSelectedItem()+"" ,
-                // ((Spinner)findViewById(R.id.spinnerModel)).getSelectedItem().toString(),
-                "Model",
+        String[] SearchParameters = {
+                ((Spinner)findViewById(R.id.spinnerManufacturer)).getSelectedItem().toString() ,
+                ((Spinner)findViewById(R.id.spinnerModel)).getSelectedItem().toString(),
                 ((EditText)findViewById(R.id.editTextYearFrom)).getText().toString(),
                 ((EditText)findViewById(R.id.editTextYearTo)).getText().toString(),
                 ((EditText)findViewById(R.id.editTextKmFrom)).getText().toString(),
                 ((EditText)findViewById(R.id.editTextKmTo)).getText().toString(),
                 ((EditText)findViewById(R.id.editTextPriceFrom)).getText().toString(),
                 ((EditText)findViewById(R.id.editTextPriceTo)).getText().toString(),
-                "Order"};
-        // ((Spinner)findViewById(R.id.spinnerOrder)).getSelectedItem().toString()};
-
+                ((Spinner)findViewById(R.id.spinnerOrder)).getSelectedItem().toString()};
 
         LastSearchParameters = SearchParameters;
         intent.putExtra(EXTRA_MESSAGE, SearchParameters);
@@ -105,10 +114,7 @@ public class HomePage extends ActionBarActivity {
 
     public void myCars(MenuItem item) {
         Intent intent = new Intent(this, CarsForSale.class);
-
-        String Parameters = "MyCars";
-
-        intent.putExtra(EXTRA_MESSAGE, Parameters);
+        intent.putExtra(EXTRA_MESSAGE, new String[]{"MyCars"});
         startActivity(intent);
 
     }

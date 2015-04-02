@@ -86,10 +86,9 @@ public class Login extends ActionBarActivity {
 
 
             //Set shared preference to the user id
-            SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putInt("Id", seller.getId());
-            editor.commit();
+            SharedPreferences sharedPref = this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
+            sharedPref.edit().putInt("com.brice.muhamed.carsellingapp.Id", seller.getId()).apply();
+
 
             ShowToast("Welcome " + seller.getUsername() + " " + seller.getId());
 

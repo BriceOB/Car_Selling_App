@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.brice.muhamed.carsellingapp.Object.Car;
 import com.brice.muhamed.carsellingapp.Object.Seller;
 
+import org.apache.http.MethodNotSupportedException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,18 +92,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public List<String> getModel() {
+    //Get list Model for a manufacturer
+    public List<String> getModel(String Manufacturer) {
 
         List<String> Model = new ArrayList<String>();
 
-        String querySelectAll = "SELECT * FROM " + CarContract.EntryCar.TABLE_NAME;
+        String querySelectAll = "SELECT * FROM " + CarContract.EntryCar.TABLE_NAME + ", " + ManufacturerContract.EntryManufacturer.TABLE_NAME+ " WHERE " + CarContract.EntryCar.COLUMN_NAME_ManufacturerId + " = (SELECT DISTINCT " + ManufacturerContract.EntryManufacturer._ID + " FROM "  + ManufacturerContract.EntryManufacturer.TABLE_NAME+  " WHERE "+ ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND + " = '" + Manufacturer+ "' )";
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor c = db.rawQuery(querySelectAll, null);
 
         if (c.moveToFirst()) {
-            for (int i = 0; i < c.getCount(); i++) {
+           while (!c.isAfterLast()) {
                 Model.add(c.getString(c.getColumnIndex(CarContract.EntryCar.COLUMN_NAME_Model)));
                 c.move(1);
             }
@@ -157,7 +160,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             return null;
         }
 
-//return false if no users was found
 
         c.moveToFirst();
         Seller seller = new Seller(c.getInt(c.getColumnIndex(SellerContract.EntrySeller._ID)),Username,Password);
@@ -173,7 +175,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(CarContract.EntryCar.COLUMN_NAME_Model,car.getModel() );
         values.put(CarContract.EntryCar.COLUMN_NAME_ManufacturerId,car.getManufacturerId());
         values.put(CarContract.EntryCar.COLUMN_NAME_SellerId,car.getSellerId() );
-
+        values.put(CarContract.EntryCar.COLUMN_NAME_CarDate,car.getCarDate().toString() );
+        values.put(CarContract.EntryCar.COLUMN_NAME_CreationDate,car.getCreationDate().toString() );
+        values.put(CarContract.EntryCar.COLUMN_NAME_Kilometers,car.getKilometers() );
+        values.put(CarContract.EntryCar.COLUMN_NAME_Fuel,car.getFuel() );
+       // values.put(CarContract.EntryCar.COLUMN_NAME_Gearbox,car.getGearBox) );
+        values.put(CarContract.EntryCar.COLUMN_NAME_Doors,car.getDoors() );
+        values.put(CarContract.EntryCar.COLUMN_NAME_Price,car.getPrice() );
+        values.put(CarContract.EntryCar.COLUMN_NAME_Description,car.getDescription() );
+        values.put(CarContract.EntryCar.COLUMN_NAME_ToSell,car.getToSell() );
 
         // Inserting Row
         db.insert(CarContract.EntryCar.TABLE_NAME, null, values);
@@ -202,24 +212,83 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+    public String[][] getMyCars(int UserId){
 
-/*
-    public String[] getMyCars(int UserId){
+        if(UserId==0)
+            return null;
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String[] Model;
-
-        String MY_QUERY = "SELECT * FROM "+
-                CarContract.EntryCar.TABLE_NAME + " c INNER JOIN " + ManufacturerContract.EntryManufacturer.TABLE_NAME +
-                " m ON c._id=m._id INNER JOIN " +  CarContract.EntryCar.TABLE_NAME + " "
-        WHERE b.property_id=?";
 
 
-        String MY_QUERY = "SELECT * FROM " + CarContract.EntryCar.TABLE_NAME + " AS c INNER JOIN " + ManufacturerContract.EntryManufacturer.TABLE_NAME + " AS m " +  "ON a.id=b.other_id WHERE b.property_id=?";
+        String MY_QUERY = "SELECT DISTINCT "+ CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath + " FROM "+
+                CarContract.EntryCar.TABLE_NAME + " c , " + ManufacturerContract.EntryManufacturer.TABLE_NAME +" m , "+  SellerContract.EntrySeller.TABLE_NAME + " s WHERE c." + CarContract.EntryCar.COLUMN_NAME_ManufacturerId + " = m._id AND c." + CarContract.EntryCar.COLUMN_NAME_SellerId + " = " + UserId
 
-        db.rawQuery(MY_QUERY, new String[]{String.valueOf(propertyId)});
+;
+        Cursor cur = db.rawQuery(MY_QUERY,new String [] {});
+
+
+
+
+        if(cur.moveToFirst()) {
+            String[][] Model = new String[cur.getCount()][5];
+
+            for(int row = 0; row< Model.length;row++){
+                for(int column = 0 ;column < Model[0].length;column++){
+
+                    Model[row][column] = cur.getString(column);
+
+                }
+                cur.moveToNext();
+            }
+
+            cur.close();
+            return Model;
+        }
+        return null;
     }
-*/
+
+
+    public String[][] GetResultSearch(String Brand, String Model, String Year, String YearTo, String KmFrom, String KmTo, String PriceFrom, String PriceTo, String Order){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor c = db.query(ManufacturerContract.EntryManufacturer.TABLE_NAME + ", " + CarContract.EntryCar.TABLE_NAME,
+                new String[] { "*"},
+                ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND + " = '" + Brand + "' AND " +
+                      ManufacturerContract.EntryManufacturer.TABLE_NAME+"."+ ManufacturerContract.EntryManufacturer._ID + " = '" + CarContract.EntryCar.COLUMN_NAME_ManufacturerId + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_ToSell + " = '" + "1" + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_CarDate.substring(CarContract.EntryCar.COLUMN_NAME_CarDate.length()-4,CarContract.EntryCar.COLUMN_NAME_CarDate.length())+ " >= '" + Year + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_CarDate.substring(CarContract.EntryCar.COLUMN_NAME_CarDate.length()-4,CarContract.EntryCar.COLUMN_NAME_CarDate.length()) + " <= '" + YearTo + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_Kilometers+ " >= '" + KmFrom + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_Kilometers+ " <= '" + KmTo + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_Price+ " >= '" + PriceFrom + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_Price+ " <= '" + PriceTo + "' AND " +
+
+                ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND + " = '" + Brand + "'" ,
+                null,
+                null,
+                null,
+                null);
+
+
+
+
+        if(c.moveToFirst()) {
+            String[][] result = new String[c.getCount()][5];
+
+            for(int row = 0; row< result.length;row++){
+                for(int column = 0 ;column < result[0].length;column++){
+
+                    result[row][column] = c.getString(column);
+
+                }
+                c.moveToNext();
+            }
+
+            c.close();
+            return result;
+        }
+        return null;
+    }
 
 }
