@@ -69,7 +69,7 @@ public class CarsForSale extends ActionBarActivity {
                                                 Toast.makeText(CarsForSale.this, "Element: " + Cars[position][5], Toast.LENGTH_SHORT).show();
 
                                                 Intent intent = new Intent(CarsForSale.this, ShowCarDetails.class);
-                                                intent.putExtra(EXTRA_MESSAGE, new String[]{Cars[position][5]});
+                                                intent.putExtra(EXTRA_MESSAGE, Cars[position][5]);
                                                 startActivity(intent);
 
                                             }

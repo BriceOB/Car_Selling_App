@@ -5,6 +5,9 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
 
 
 public class ShowCarDetails extends ActionBarActivity {
@@ -14,9 +17,27 @@ public class ShowCarDetails extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_car_details);
 
+        DatabaseHandler dbh  = new DatabaseHandler(getBaseContext());
+
         //Get intent from search page
         Intent intent = getIntent();
         String CarId = intent.getStringExtra(HomePage.EXTRA_MESSAGE);
+
+        String[] CarDetails = dbh.getCarDetails(CarId);
+
+      ((TextView)findViewById(R.id.TextViewInputManufacture)).setText(CarDetails[0]);
+        ((TextView)findViewById(R.id.TextViewInputDescription)).setText(CarDetails[1]);
+        ((TextView)findViewById(R.id.TextViewInputDoors)).setText(CarDetails[2]);
+        ((TextView)findViewById(R.id.TextViewInputFuel)).setText(CarDetails[3]);
+        ((TextView)findViewById(R.id.TextViewInputGearbox)).setText(CarDetails[4]);
+        ((TextView)findViewById(R.id.TextViewInputKm)).setText(CarDetails[0]);
+        ((TextView)findViewById(R.id.TextViewInputModel)).setText(CarDetails[0]);
+        ((TextView)findViewById(R.id.TextViewInputPrice)).setText(CarDetails[0]);
+        ((TextView)findViewById(R.id.TextViewInputSellerAddress)).setText(CarDetails[0]);
+        ((TextView)findViewById(R.id.TextViewInputSellerName)).setText(CarDetails[0]);
+        ((TextView)findViewById(R.id.TextViewInputYear)).setText(CarDetails[0]);
+
+
     }
 
 

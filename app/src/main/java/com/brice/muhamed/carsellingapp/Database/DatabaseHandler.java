@@ -290,4 +290,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
+    public String[] getCarDetails(String CarId){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor c = db.query(ManufacturerContract.EntryManufacturer.TABLE_NAME + ", " + CarContract.EntryCar.TABLE_NAME + ", " + SellerContract.EntrySeller.TABLE_NAME,
+                new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath },
+                CarContract.EntryCar.TABLE_NAME+"."+CarContract.EntryCar._ID + " = '" + CarId + "' AND " +
+                        CarContract.EntryCar.COLUMN_NAME_SellerId + " = " + SellerContract.EntrySeller.TABLE_NAME+"."+SellerContract.EntrySeller._ID + " AND " +
+                        ManufacturerContract.EntryManufacturer.TABLE_NAME+"."+ ManufacturerContract.EntryManufacturer._ID + " = " + CarContract.EntryCar.COLUMN_NAME_ManufacturerId  ,
+                null,
+                null,
+                null,
+                null);
+
+
+       c.moveToFirst();
+            String[] CarDetails = new String[5];
+
+            for(int row = 0; row< CarDetails.length;row++){
+
+                CarDetails[row] = c.getString(row);
+
+                c.moveToNext();
+            }
+
+            c.close();
+            return CarDetails;
+
+
+    }
+
 }
