@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Car Selling App</string>
+    <string name="action_settings">Paramètre</string>
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_cars_for_sale">Voitures en vente</string>
+    <string name="Manufacturer">Marque</string>
+    <string name="Model">Modèle</string>
+    <string name="Year">Année</string>
+    <string name="Kilometers">Km</string>
+    <string name="Price">Prix</string>
+    <string name="Order">Order</string>
+    <string name="From">De</string>
+    <string name="To">À</string>
+    <string name="Search">Chercher</string>
+    <string name="Username">Utilisateur</string>
+    <string name="Password">Mot de passe</string>
+    <string name="Login">Connexion</string>
+    <string name="Register">S\'enregistrer</string>
+    <string name="menu">Menu</string>
+
+    <string-array name="ListManufacturer">
+        <item>Alfa Romeo</item>
+        <item>Aston Martin</item>
+        <item>Audi </item>
+        <item>Bentley </item>
+        <item>BMW </item>
+        <item>Bugatti </item>
+        <item>Chevrolet </item>
+    </string-array>
+    <string-array name="ListOrder">
+        <item>Date</item>
+        <item>Price</item>
+        <item>Km</item>
+    </string-array>
+
+    <string name="drawer_open">Open menu</string>
+    <string name="drawer_close">Close menu</string>
+    <string name="action_Login">Login</string>
+
+    <string-array name="ListMenu">
+        <item>Home page</item>
+        <item>Login</item>
+        <item>MyCars</item>
+        <item>Insert Car </item>
+    </string-array>
+
+    <string name="title_activity_infos">Infos</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!-- Infos page -->
+    <string name="Infos">Infos</string>
+    <string name="Credit">Created by Muhamed and Brice</string>
+
+    <!-- -->
+
+    <string name="title_activity_show_car_details">ShowCarDetails</string>
+    <string name="manufacture">Brand</string>
+    <string name="model">Model</string>
+    <string name="weight">Weight</string>
+    <string name="hp">HP</string>
+    <string name="km">Kilometers</string>
+    <string name="doors">Doors</string>
+    <string name="description">Additional description</string>
+    <string name="price">Price</string>
+    <string name="fuel">Fuel</string>
+    <string name="name">Name</string>
+    <string name="address">Address</string>
+    <string name="postalCode">Postal code</string>
+    <string name="place">Place</string>
+    <string name="car">Car</string>
+    <string name="inputUser">---</string>
+    <string name="year">Year</string>
+    <string name="gearbox">Gearbox</string>
+    <string name="seller">Seller</string>
+    <string name="phone">Phone</string>
+    <string name="email">E-mail</string>
+    <string name="ToSell">ToSell</string>
+    <string name="colorText">#FFFFFFFF</string>
+    <string name="title_activity_insert_car_details">Insert_car_details</string>
+
+    <string name="submit">Submit</string>
+
+    <string-array name="manufacturerList">
+        <item>Audi</item>
+        <item>BMW</item>
+        <item>Mercedes-Benz</item>
+        <item>Volkswagen</item>
+    </string-array>
+
+    <string-array name="gearboxList">
+        <item>Gearbox</item>
+        <item>Automatic</item>
+        <item>Manual</item>
+    </string-array>
+
+    <string-array name="fuelList">
+        <item>Fuel</item>
+        <item>Diesel</item>
+        <item>Gasoline</item>
+    </string-array>
+    <string name="title_activity_insert_seller">InsertSeller</string>
+    <string name="title_activity_about">About</string>
+    <string name="action_insert">Insert</string>
+    <string name="action_myCars">My cars</string>
+    <string name="action_about">About</string>
+    <string name="action_login">Login</string>
+    <string name="account">Compte d\'utilisateur</string>
+    <string name="Image">Photo</string>
+    <string name="AddPhoto">Ajouter photo</string>
+
+    <string-array name="PopUpIMage">
+        <item>Take a photo</item>
+        <item>Choisir de la Gallerie</item>
+        <item>Annuler</item>
+    </string-array>
+</resources>
