@@ -131,5 +131,7 @@ public class InsertCarDetails extends ActionBarActivity {
     }
 
 
+    public void UploadCarImage(View view) {
+    }
 }
 

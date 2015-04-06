@@ -116,6 +116,15 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/Image"
+            android:id="@+id/buttonUploadImage"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal"
+            android:onClick="UploadCarImage" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/submit"
             android:id="@+id/buttonSubmitCar"
             android:layout_weight="1"
