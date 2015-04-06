@@ -46,11 +46,16 @@ public class ShowCarDetails extends ActionBarActivity {
         ((TextView)findViewById(R.id.TextViewInputSellerName)).setText("");
         ((TextView)findViewById(R.id.TextViewInputYear)).setText("");
 
-        Bitmap thumbnail = (BitmapFactory.decodeFile(car.getPhotoPath()));
-        ImageView imageView = (ImageView)findViewById(R.id.imageViewInsertCarDetails);
-        int width = 960;
-        int height = thumbnail.getHeight() * width / thumbnail.getWidth();
-        imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
+        if(!car.getPhotoPath().equals("")){
+            Bitmap thumbnail = (BitmapFactory.decodeFile(car.getPhotoPath()));
+            ImageView imageView = (ImageView)findViewById(R.id.imageViewShowCarDetails);
+            int width = 960;
+            int height = thumbnail.getHeight() * width / thumbnail.getWidth();
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
+        }
+
+        //if(dbh.getcarsellerid)
+
     }
 
     @Override

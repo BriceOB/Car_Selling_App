@@ -360,11 +360,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         carValues.put( CarContract.EntryCar.COLUMN_NAME_Doors ,car.getDoors() );
         carValues.put(CarContract.EntryCar.COLUMN_NAME_Price ,car.getPrice() );
         carValues.put(CarContract.EntryCar.COLUMN_NAME_Description, car.getDescription()  );
-        //carValues.put( CarContract.EntryCar.COLUMN_NAME_PhotoPath, car.getPhotoPath()  );
+        carValues.put( CarContract.EntryCar.COLUMN_NAME_PhotoPath, car.getPhotoPath()  );
         carValues.put(CarContract.EntryCar.COLUMN_NAME_CarDate , car.getCarDate() );
         carValues.put( CarContract.EntryCar.COLUMN_NAME_ToSell , car.getToSell() );
         carValues.put( CarContract.EntryCar.COLUMN_NAME_ManufacturerId , getManufacturerId(manufacturer) );
-
 
         db.update(CarContract.EntryCar.TABLE_NAME,carValues,CarContract.EntryCar._ID +" = "+ CarId,null);
 

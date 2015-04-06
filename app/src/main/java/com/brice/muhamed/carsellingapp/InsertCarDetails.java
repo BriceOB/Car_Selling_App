@@ -103,7 +103,7 @@ public class InsertCarDetails extends ActionBarActivity {
 
             Bitmap thumbnail = (BitmapFactory.decodeFile(car.getPhotoPath()));
             ImageView imageView = (ImageView)findViewById(R.id.imageViewInsertCarDetails);
-            int width = 960;
+            int width = 200;
             int height = thumbnail.getHeight() * width / thumbnail.getWidth();
             imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
             ImagePath = car.getPhotoPath();
@@ -202,7 +202,6 @@ public class InsertCarDetails extends ActionBarActivity {
         toast.show();
 
         ImagePath = "";
-         this.getParent().recreate();
         this.finish();
     }
 
@@ -276,7 +275,7 @@ public class InsertCarDetails extends ActionBarActivity {
                         bitmap.compress(Bitmap.CompressFormat.JPEG, 85, outFile);
                         outFile.flush();
                         outFile.close();
-
+                        ImagePath = file.getAbsolutePath();
                         Bitmap thumbnail = (BitmapFactory.decodeFile(file.getAbsolutePath()));
                         ((ImageView)findViewById(R.id.imageViewInsertCarDetails)).setImageBitmap(thumbnail);
                         ImageView imageView = (ImageView)findViewById(R.id.imageViewInsertCarDetails);
@@ -284,7 +283,7 @@ public class InsertCarDetails extends ActionBarActivity {
                         int height = thumbnail.getHeight() * width / thumbnail.getWidth();
                         imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
 
-                        ImagePath = file.getAbsolutePath();
+
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -307,12 +306,13 @@ public class InsertCarDetails extends ActionBarActivity {
                 String picturePath = c.getString(columnIndex);
                 c.close();
                     Bitmap thumbnail = (BitmapFactory.decodeFile(picturePath));
+                ImagePath = picturePath;
                 ImageView imageView = (ImageView)findViewById(R.id.imageViewInsertCarDetails);
                 int width = 960;
                 int height = thumbnail.getHeight() * width / thumbnail.getWidth();
                 imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
 
-                ImagePath = picturePath;
+
             }
         }
     }

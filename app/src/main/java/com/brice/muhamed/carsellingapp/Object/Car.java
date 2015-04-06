@@ -45,6 +45,7 @@ public class Car {
         ToSell = toSell;
         ManufacturerId = manufacturerId;
         SellerId = sellerId;
+        this.PhotoPath =PhotoPath;
     }
 
     public Car( String model, int kilometers, String fuel, int doors,

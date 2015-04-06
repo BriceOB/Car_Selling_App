@@ -18,10 +18,15 @@
         android:stretchColumns="1"
         android:id="@+id/tableLayout">
 
-        <!--space for photo-->
-        <Space
-            android:layout_width="fill_parent"
-            android:layout_height="300dp" />
+        <TableRow>
+
+        <ImageView
+            android:id="@+id/imageViewShowCarDetails"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        </TableRow>
 
         <TableRow>
             <TextView
