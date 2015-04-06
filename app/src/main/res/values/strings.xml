@@ -35,6 +35,12 @@
         <item>Km</item>
     </string-array>
 
+    <string-array name="PopUpIMage">
+        <item>Take a photo</item>
+        <item>Take from gallery</item>
+        <item>Cancel</item>
+    </string-array>
+
     <string name="drawer_open">Open menu</string>
     <string name="drawer_close">Close menu</string>
     <string name="action_Login">Login</string>
@@ -104,4 +110,6 @@
     <string name="action_about">About</string>
     <string name="action_login">Login</string>
     <string name="account">Useraccount</string>
+    <string name="Image">Photo</string>
+    <string name="AddPhoto">Add Photo</string>
 </resources>

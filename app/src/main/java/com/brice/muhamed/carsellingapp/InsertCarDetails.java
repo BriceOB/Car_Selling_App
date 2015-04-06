@@ -2,7 +2,6 @@ package com.brice.muhamed.carsellingapp;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
@@ -16,7 +15,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -32,7 +30,6 @@ import java.util.Date;
 public class InsertCarDetails extends ActionBarActivity {
 
     private Spinner spinnerManufacture;
-    private String CarId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,69 +37,25 @@ public class InsertCarDetails extends ActionBarActivity {
         setContentView(R.layout.activity_insert_car_details);
         DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
 
+        //spinners to create
+        ArrayAdapter<String> adapterManufacture = new ArrayAdapter<String>(this,  R.layout.my_spinner_layout,dbh.getManufacturer());
+        adapterManufacture.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        //Get intent
-        Intent intent = getIntent();
-        CarId = intent.getStringExtra(HomePage.EXTRA_MESSAGE);
+        spinnerManufacture = (Spinner)findViewById(R.id.spinnerManufacture);
+        spinnerManufacture.setAdapter(adapterManufacture);
 
+        ArrayAdapter<CharSequence> adapterFuel = ArrayAdapter.createFromResource(this, R.array.fuelList, R.layout.my_spinner_layout);
+        adapterFuel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+        Spinner spinnerFuel = (Spinner)findViewById(R.id.spinnerFuel);
+        spinnerFuel.setAdapter(adapterFuel);
 
-            //spinners to create
-            ArrayAdapter<String> adapterManufacture = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getManufacturer());
-            adapterManufacture.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapterGearbox = ArrayAdapter.createFromResource(this, R.array.gearboxList, R.layout.my_spinner_layout);
+        adapterGearbox.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-            spinnerManufacture = (Spinner) findViewById(R.id.spinnerManufacture);
-            spinnerManufacture.setAdapter(adapterManufacture);
+        Spinner spinnerGearbox = (Spinner)findViewById(R.id.spinnerGearbox);
+        spinnerGearbox.setAdapter(adapterGearbox);
 
-            ArrayAdapter<CharSequence> adapterFuel = ArrayAdapter.createFromResource(this, R.array.fuelList, R.layout.my_spinner_layout);
-            adapterFuel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-            Spinner spinnerFuel = (Spinner) findViewById(R.id.spinnerFuel);
-            spinnerFuel.setAdapter(adapterFuel);
-
-            ArrayAdapter<CharSequence> adapterGearbox = ArrayAdapter.createFromResource(this, R.array.gearboxList, R.layout.my_spinner_layout);
-            adapterGearbox.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-            Spinner spinnerGearbox = (Spinner) findViewById(R.id.spinnerGearbox);
-            spinnerGearbox.setAdapter(adapterGearbox);
-
-        if(CarId!=null){
-
-           Car car = dbh.getCar(CarId);
-            int Manufacturerposition = adapterManufacture.getPosition(car.getManufacturer());
-            spinnerManufacture.setSelection(Manufacturerposition);
-
-            int Fuelposition = adapterManufacture.getPosition(car.getFuel());
-            spinnerManufacture.setSelection(Fuelposition);
-
-         //   int GearBoxposition = adapterManufacture.getPosition();
-        //    spinnerManufacture.setSelection(GearBoxposition);
-
-            EditText model = (EditText)findViewById(R.id.EditTextModel);
-            EditText km = (EditText)findViewById(R.id.EditTextKm);
-            Spinner fuel = (Spinner)findViewById(R.id.spinnerFuel);
-            EditText doors = (EditText)findViewById(R.id.EditTextDoors);
-            EditText price = (EditText)findViewById(R.id.EditTextPrice);
-            EditText desc = (EditText)findViewById(R.id.EditTextDescription);
-
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd_HHmmss");
-            String creationDate = sdf.format(new Date());
-            EditText year = (EditText)findViewById(R.id.EditTextYear);
-            CheckBox RadioButtonSell = (CheckBox)findViewById(R.id.radioButtonToSell);
-
-            model.setText(car.getModel());
-            km.setText(car.getKilometers()+"");
-            doors.setText(car.getDoors()+"");
-            price.setText(car.getPrice()+"");
-            desc.setText(car.getDescription());
-            creationDate=car.getCreationDate();
-            year.setText(car.getCarDate());
-            if(car.getToSell()==1){
-                RadioButtonSell.setChecked(true);
-            }
-
-
-        }
 
 
     }
@@ -146,7 +99,7 @@ public class InsertCarDetails extends ActionBarActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd_HHmmss");
         String creationDate = sdf.format(new Date());
         EditText year = (EditText)findViewById(R.id.EditTextYear);
-        CheckBox RadioButtonSell = (CheckBox)findViewById(R.id.radioButtonToSell);
+        RadioButton RadioButtonSell = (RadioButton)findViewById(R.id.radioButtonToSell);
         int toSell = 0;
         if(RadioButtonSell.isChecked()){
             toSell = 1;
@@ -169,17 +122,7 @@ public class InsertCarDetails extends ActionBarActivity {
                 id
         );
 
-        if(CarId==null){
-            SharedPreferences sharedPref = this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
-
-
-            int UserId = sharedPref.getInt("com.brice.muhamed.carsellingapp.Id", 0);
-            dbh.InsertCarInfos(car, UserId);
-
-        }
-        else{
-            dbh.updateCarInfos(car, CarId,manufacturer.getSelectedItem().toString());
-        }
+        dbh.InsertCarInfos(car);
 
         Toast toast = Toast.makeText(getApplicationContext(), "Car successfully added", Toast.LENGTH_SHORT);
         toast.show();
