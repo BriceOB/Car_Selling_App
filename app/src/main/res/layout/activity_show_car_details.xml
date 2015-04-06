@@ -379,6 +379,30 @@
                 android:text="@string/inputUser"
                 android:textColor="#ffffffff" />
         </TableRow>
+
+        <TableRow>
+            <!-- Column 1 -->
+            <Button
+                android:id="@+id/ButtonModify"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/modify"
+                android:textColor="#ffffffff"
+                android:onClick="modify" />
+
+            <!-- Column 2 -->
+            <Button
+                android:id="@+id/ButtonDelete"
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:padding="5dip"
+                android:layout_weight="1"
+                android:text="@string/delete"
+                android:textColor="#ffffffff"
+                android:onClick="delete" />
+        </TableRow>
     </TableLayout>
 
 </ScrollView>

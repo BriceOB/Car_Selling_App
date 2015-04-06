@@ -38,6 +38,7 @@
     <string name="drawer_open">Open menu</string>
     <string name="drawer_close">Close menu</string>
     <string name="action_Login">Login</string>
+    <string name="action_logout">Logout</string>
 
     <string-array name="ListMenu">
         <item>Home page</item>
@@ -77,6 +78,9 @@
     <string name="phone">Phone</string>
     <string name="email">E-mail</string>
     <string name="ToSell">ToSell</string>
+    <string name="modify">Modify</string>
+    <string name="delete">Delete</string>
+
     <string name="colorText">#FFFFFFFF</string>
     <string name="title_activity_insert_car_details">Insert_car_details</string>
 

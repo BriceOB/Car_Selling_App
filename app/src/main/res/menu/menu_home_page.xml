@@ -9,18 +9,28 @@
         android:onClick="login"/>
 
     <item
+        android:id="@+id/action_logout"
+        android:title="@string/action_logout"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:onClick="logout"
+        android:visible="false"/>
+
+    <item
         android:id="@+id/action_insert"
         android:title="@string/action_insert"
         android:orderInCategory="100"
         app:showAsAction="never"
-        android:onClick="insert"/>
+        android:onClick="insert"
+        android:enabled="false"/>
 
     <item
         android:id="@+id/action_myCars"
         android:title="@string/action_myCars"
         android:orderInCategory="100"
         app:showAsAction="never"
-        android:onClick="myCars"/>
+        android:onClick="myCars"
+        android:enabled="false"/>
 
     <item
         android:id="@+id/action_settings"

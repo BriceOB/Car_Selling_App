@@ -1,14 +1,19 @@
 package com.brice.muhamed.carsellingapp;
 
+import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
 import com.brice.muhamed.carsellingapp.Database.ManufacturerContract;
@@ -36,6 +41,18 @@ public class HomePage extends ActionBarActivity {
         adapterManufacturer = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getManufacturer());
         adapterManufacturer.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerManufacturer.setAdapter(adapterManufacturer);
+        spinnerManufacturer.setOnItemSelectedListener(
+                new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        updateModel(position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
 
         //Spinner Order
         Spinner spinnerOrder = (Spinner) findViewById(R.id.spinnerOrder);
@@ -45,9 +62,14 @@ public class HomePage extends ActionBarActivity {
 
         //Spinner Model
         Spinner spinnerModel = (Spinner) findViewById(R.id.spinnerModel);
-        adapterModel = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getModel(spinnerManufacturer.getSelectedItem().toString()));
+        adapterModel = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getModel(spinnerManufacturer.getItemAtPosition(0).toString()));
         adapterModel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerModel.setAdapter(adapterModel);
+
+
+
+
+
     }
 
 
@@ -55,6 +77,26 @@ public class HomePage extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home_page, menu);
+
+
+
+        SharedPreferences sharedPref = this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
+
+        int i = sharedPref.getInt("com.brice.muhamed.carsellingapp.Id",0);
+        if( i >0){
+
+            MenuItem insert =  menu.findItem(R.id.action_insert);
+            MenuItem myCars =  menu.findItem(R.id.action_myCars);
+            MenuItem login =  menu.findItem(R.id.action_login);
+            MenuItem logout =  menu.findItem(R.id.action_logout);
+
+            insert.setEnabled(true);
+            myCars.setEnabled(true);
+            login.setVisible(false);
+            logout.setVisible(true);
+
+        }
+
         return true;
     }
 
@@ -66,18 +108,25 @@ public class HomePage extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_logout) {
+        invalidateOptionsMenu();
+            return true;
+        }
+        if (id == R.id.action_login) {
+            invalidateOptionsMenu();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void updateModel(){
+    public void updateModel(int position){
         Spinner spinnerModel = (Spinner) findViewById(R.id.spinnerModel);
-        adapterModel = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getModel(spinnerManufacturer.getSelectedItem().toString()));
+        adapterModel = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getModel(spinnerManufacturer.getItemAtPosition(position).toString()));
         adapterModel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerModel.setAdapter(adapterModel);
+        spinnerModel.setSelection(0);
+        adapterModel.notifyDataSetChanged();
     }
 
     public void SearchCars(View view) {
@@ -128,5 +177,15 @@ public class HomePage extends ActionBarActivity {
 
         Intent intent = new Intent(this, About.class);
         startActivity(intent);
+    }
+
+    public void logout(MenuItem item){
+
+        getSharedPreferences("com.brice.muhamed.carsellingapp.Id", MODE_PRIVATE).edit().clear().commit();
+        getSharedPreferences("com.brice.muhamed.carsellingapp.Id", MODE_PRIVATE).edit().putInt("com.brice.muhamed.carsellingapp.Id",0).commit();
+       invalidateOptionsMenu();
+        recreate();
+
+
     }
 }

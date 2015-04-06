@@ -1,5 +1,6 @@
 package com.brice.muhamed.carsellingapp;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -23,6 +24,7 @@ import com.brice.muhamed.carsellingapp.Object.Seller;
 public class Login extends ActionBarActivity {
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class Login extends ActionBarActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_login, menu);
+
         return true;
     }
 
@@ -53,8 +56,6 @@ public class Login extends ActionBarActivity {
     }
 
     public void register(View view) {
-
-
 
         Intent intent = new Intent(this, InsertSeller.class);
         startActivity(intent);
@@ -83,14 +84,14 @@ public class Login extends ActionBarActivity {
 
         if(seller!=null){
 
-
-
             //Set shared preference to the user id
             SharedPreferences sharedPref = this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
             sharedPref.edit().putInt("com.brice.muhamed.carsellingapp.Id", seller.getId()).apply();
 
+            ShowToast("Welcome " + seller.getUsername() + " " + sharedPref.getInt("com.brice.muhamed.carsellingapp.Id",0));
 
-            ShowToast("Welcome " + seller.getUsername() + " " + seller.getId());
+            Activity homePage = getParent();
+            homePage.recreate();
 
             this.finish();
             return;

@@ -21,6 +21,7 @@ public class Car {
     private   String CarDate ;
     private   int ToSell ;
     public    int ManufacturerId ;
+    public String Manufacturer;
     public    int SellerId;
 
     public Car( String model, int kilometers, String fuel, int doors,
@@ -44,6 +45,24 @@ public class Car {
         ToSell = toSell;
         ManufacturerId = manufacturerId;
         SellerId = sellerId;
+    }
+
+    public Car( String model, int kilometers, String fuel, int doors,
+                int price, String description,
+                String creationDate, String carDate, int toSell, String manufacturer
+                ) {
+
+        Model = model;
+        Kilometers = kilometers;
+        Fuel = fuel;
+        Doors = doors;
+        Price = price;
+        Description = description;
+        CreationDate = creationDate;
+        CarDate = carDate;
+        ToSell = toSell;
+        Manufacturer = manufacturer;
+
     }
 
 
@@ -73,6 +92,11 @@ public class Car {
     public String getModel() {
         return Model;
     }
+
+    public String getManufacturer() {
+        return Manufacturer;
+    }
+
 
     public int getKilometers() {
         return Kilometers;

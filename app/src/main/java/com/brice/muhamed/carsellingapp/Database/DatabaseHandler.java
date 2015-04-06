@@ -2,6 +2,7 @@ package com.brice.muhamed.carsellingapp.Database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -97,7 +98,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         List<String> Model = new ArrayList<String>();
 
-        String querySelectAll = "SELECT * FROM " + CarContract.EntryCar.TABLE_NAME + ", " + ManufacturerContract.EntryManufacturer.TABLE_NAME+ " WHERE " + CarContract.EntryCar.COLUMN_NAME_ManufacturerId + " = (SELECT DISTINCT " + ManufacturerContract.EntryManufacturer._ID + " FROM "  + ManufacturerContract.EntryManufacturer.TABLE_NAME+  " WHERE "+ ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND + " = '" + Manufacturer+ "' )";
+        String querySelectAll = "SELECT DISTINCT " + CarContract.EntryCar.COLUMN_NAME_Model + " FROM " + CarContract.EntryCar.TABLE_NAME + ", " + ManufacturerContract.EntryManufacturer.TABLE_NAME+ " WHERE " + CarContract.EntryCar.COLUMN_NAME_ManufacturerId + " = (SELECT DISTINCT " + ManufacturerContract.EntryManufacturer._ID + " FROM "  + ManufacturerContract.EntryManufacturer.TABLE_NAME+  " WHERE "+ ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND + " = '" + Manufacturer+ "' )";
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -125,11 +126,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
 
         ContentValues valuesCar = new ContentValues();
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Model,"A4");
+        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Model,"AcuraModel");
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_ManufacturerId,1);
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_ToSell,1);
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_CarDate,"-");
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_CreationDate,"-");
+        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_CarDate,"2000");
+        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_CreationDate,"2000");
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Doors,5);
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Fuel,"Diesel");
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Kilometers,200000);
@@ -167,14 +168,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    public void InsertCarInfos(Car car){
+    public void InsertCarInfos(Car car,int UserId){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(CarContract.EntryCar.COLUMN_NAME_Model,car.getModel() );
         values.put(CarContract.EntryCar.COLUMN_NAME_ManufacturerId,car.getManufacturerId());
-        values.put(CarContract.EntryCar.COLUMN_NAME_SellerId,car.getSellerId() );
+        values.put(CarContract.EntryCar.COLUMN_NAME_SellerId,UserId );
         values.put(CarContract.EntryCar.COLUMN_NAME_CarDate,car.getCarDate().toString() );
         values.put(CarContract.EntryCar.COLUMN_NAME_CreationDate,car.getCreationDate().toString() );
         values.put(CarContract.EntryCar.COLUMN_NAME_Kilometers,car.getKilometers() );
@@ -219,16 +220,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-
-
-        String MY_QUERY = "SELECT DISTINCT "+ CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath +"," + CarContract.EntryCar.TABLE_NAME + "."+CarContract.EntryCar._ID+" FROM "+
+        String MY_QUERY = "SELECT DISTINCT "+ CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath +", " + "c."+CarContract.EntryCar._ID+" FROM "+
                 CarContract.EntryCar.TABLE_NAME + " c , " + ManufacturerContract.EntryManufacturer.TABLE_NAME +" m , "+  SellerContract.EntrySeller.TABLE_NAME + " s WHERE c." + CarContract.EntryCar.COLUMN_NAME_ManufacturerId + " = m._id AND c." + CarContract.EntryCar.COLUMN_NAME_SellerId + " = " + UserId
-
 ;
         Cursor cur = db.rawQuery(MY_QUERY,new String [] {});
-
-
-
 
         if(cur.moveToFirst()) {
             String[][] Model = new String[cur.getCount()][6];
@@ -295,7 +290,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor c = db.query(ManufacturerContract.EntryManufacturer.TABLE_NAME + ", " + CarContract.EntryCar.TABLE_NAME + ", " + SellerContract.EntrySeller.TABLE_NAME,
-                new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath },
+                new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath + ", "+ CarContract.EntryCar.COLUMN_NAME_ToSell+ ", "+ CarContract.EntryCar.COLUMN_NAME_CarDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_Doors+ ", "+ CarContract.EntryCar.COLUMN_NAME_Fuel+ ", "+ CarContract.EntryCar.COLUMN_NAME_Hp+ ", "+ CarContract.EntryCar.COLUMN_NAME_Kilometers+ ", "+ CarContract.EntryCar.COLUMN_NAME_Price },
                 CarContract.EntryCar.TABLE_NAME+"."+CarContract.EntryCar._ID + " = '" + CarId + "' AND " +
                         CarContract.EntryCar.COLUMN_NAME_SellerId + " = " + SellerContract.EntrySeller.TABLE_NAME+"."+SellerContract.EntrySeller._ID + " AND " +
                         ManufacturerContract.EntryManufacturer.TABLE_NAME+"."+ ManufacturerContract.EntryManufacturer._ID + " = " + CarContract.EntryCar.COLUMN_NAME_ManufacturerId  ,
@@ -306,18 +301,84 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
        c.moveToFirst();
-            String[] CarDetails = new String[5];
+            String[] CarDetails = new String[c.getColumnCount()];
 
-            for(int row = 0; row< CarDetails.length;row++){
+           for(int row = 0; row< CarDetails.length;row++){
 
                 CarDetails[row] = c.getString(row);
 
-                c.moveToNext();
-            }
+         }
 
             c.close();
             return CarDetails;
 
+
+    }
+
+    public Car getCar(String CarId){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor c = db.query(ManufacturerContract.EntryManufacturer.TABLE_NAME + ", " + CarContract.EntryCar.TABLE_NAME ,
+                new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + CarContract.EntryCar.COLUMN_NAME_Kilometers+", "+CarContract.EntryCar.COLUMN_NAME_Fuel + ", "+ CarContract.EntryCar.COLUMN_NAME_Doors+ ", "+ CarContract.EntryCar.COLUMN_NAME_Price + ", "+ CarContract.EntryCar.COLUMN_NAME_Description+ ", "+ CarContract.EntryCar.COLUMN_NAME_CreationDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_CarDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_ToSell+ ", "+ ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND},
+    CarContract.EntryCar.TABLE_NAME+"."+CarContract.EntryCar._ID + " = '" + CarId  + "' AND " +
+                      ManufacturerContract.EntryManufacturer.TABLE_NAME+"."+ ManufacturerContract.EntryManufacturer._ID + " = " + CarContract.EntryCar.COLUMN_NAME_ManufacturerId ,
+                null,
+                null,
+                null,
+                null);
+
+
+        c.moveToFirst();
+
+        Car car = new Car(c.getString(0), c.getInt(1),c.getString(2), c.getInt(3), c.getInt(4), c.getString(5), c.getString(6), c.getString(7), c.getInt(8), c.getString(9));
+
+        c.close();
+        return car;
+
+
+    }
+
+    public void deleteCar(String CarId){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(CarContract.EntryCar.TABLE_NAME, CarContract.EntryCar._ID + "=" + CarId, null);
+
+    }
+
+    public void updateCarInfos(Car car, String CarId, String manufacturer){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        ContentValues carValues = new ContentValues();
+        carValues.put(  CarContract.EntryCar.COLUMN_NAME_Model ,car.getModel() );
+        carValues.put( CarContract.EntryCar.COLUMN_NAME_Kilometers , car.getKilometers() );
+        carValues.put( CarContract.EntryCar.COLUMN_NAME_Fuel ,car.getFuel() );
+        carValues.put( CarContract.EntryCar.COLUMN_NAME_Doors ,car.getDoors() );
+        carValues.put(CarContract.EntryCar.COLUMN_NAME_Price ,car.getPrice() );
+        carValues.put(CarContract.EntryCar.COLUMN_NAME_Description, car.getDescription()  );
+        //carValues.put( CarContract.EntryCar.COLUMN_NAME_PhotoPath, car.getPhotoPath()  );
+        carValues.put(CarContract.EntryCar.COLUMN_NAME_CarDate , car.getCarDate() );
+        carValues.put( CarContract.EntryCar.COLUMN_NAME_ToSell , car.getToSell() );
+        carValues.put( CarContract.EntryCar.COLUMN_NAME_ManufacturerId , getManufacturerId(manufacturer) );
+
+
+        db.update(CarContract.EntryCar.TABLE_NAME,carValues,CarContract.EntryCar._ID +" = "+ CarId,null);
+
+    }
+
+    public int getManufacturerId(String manufacturer){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String MY_QUERY = "SELECT "+ ManufacturerContract.EntryManufacturer._ID +" FROM "+
+                ManufacturerContract.EntryManufacturer.TABLE_NAME + " WHERE " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND+ " = '" + manufacturer+ "'" ;
+        Cursor cur = db.rawQuery(MY_QUERY,new String [] {});
+
+       cur.moveToFirst();
+        return cur.getInt(0);
 
     }
 
