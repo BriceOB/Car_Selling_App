@@ -185,6 +185,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(CarContract.EntryCar.COLUMN_NAME_Price,car.getPrice() );
         values.put(CarContract.EntryCar.COLUMN_NAME_Description,car.getDescription() );
         values.put(CarContract.EntryCar.COLUMN_NAME_ToSell,car.getToSell() );
+        values.put(CarContract.EntryCar.COLUMN_NAME_PhotoPath, car.getPhotoPath());
 
         // Inserting Row
         db.insert(CarContract.EntryCar.TABLE_NAME, null, values);
@@ -320,7 +321,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor c = db.query(ManufacturerContract.EntryManufacturer.TABLE_NAME + ", " + CarContract.EntryCar.TABLE_NAME ,
-                new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + CarContract.EntryCar.COLUMN_NAME_Kilometers+", "+CarContract.EntryCar.COLUMN_NAME_Fuel + ", "+ CarContract.EntryCar.COLUMN_NAME_Doors+ ", "+ CarContract.EntryCar.COLUMN_NAME_Price + ", "+ CarContract.EntryCar.COLUMN_NAME_Description+ ", "+ CarContract.EntryCar.COLUMN_NAME_CreationDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_CarDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_ToSell+ ", "+ ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND},
+                new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + CarContract.EntryCar.COLUMN_NAME_Kilometers+", "+CarContract.EntryCar.COLUMN_NAME_Fuel + ", "+ CarContract.EntryCar.COLUMN_NAME_Doors+ ", "+ CarContract.EntryCar.COLUMN_NAME_Price + ", "+ CarContract.EntryCar.COLUMN_NAME_Description+ ", "+ CarContract.EntryCar.COLUMN_NAME_CreationDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_CarDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_ToSell+ ", "+ ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath},
     CarContract.EntryCar.TABLE_NAME+"."+CarContract.EntryCar._ID + " = '" + CarId  + "' AND " +
                       ManufacturerContract.EntryManufacturer.TABLE_NAME+"."+ ManufacturerContract.EntryManufacturer._ID + " = " + CarContract.EntryCar.COLUMN_NAME_ManufacturerId ,
                 null,
@@ -331,7 +332,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         c.moveToFirst();
 
-        Car car = new Car(c.getString(0), c.getInt(1),c.getString(2), c.getInt(3), c.getInt(4), c.getString(5), c.getString(6), c.getString(7), c.getInt(8), c.getString(9));
+        Car car = new Car(c.getString(0), c.getInt(1),c.getString(2), c.getInt(3), c.getInt(4), c.getString(5), c.getString(6), c.getString(7), c.getInt(8), c.getString(9), c.getString(10));
 
         c.close();
         return car;

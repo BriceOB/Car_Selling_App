@@ -1,6 +1,8 @@
 package com.brice.muhamed.carsellingapp;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,10 +46,19 @@ public class ListCarsForSale extends ArrayAdapter<String> {
 
         ImageView imageViewCar = (ImageView) rowView.findViewById(R.id.imageViewCar);
 
+
+
+
         if(Cars[position][4]!=null){
-            imageViewCar.setImageURI(Uri.fromFile(new File(Cars[position][4])));
+            Bitmap thumbnail = (BitmapFactory.decodeFile(Cars[position][4]));
+            ImageView imageView = (ImageView)rowView.findViewById(R.id.imageViewCar);
+            int width = 960;
+            int height = thumbnail.getHeight() * width / thumbnail.getWidth();
+            imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));        }
+        else{
+            imageViewCar.setImageResource(R.drawable.ic_no_picture);
+
         }
-        imageViewCar.setImageResource(R.drawable.ic_no_picture);
 
         return rowView;
     }

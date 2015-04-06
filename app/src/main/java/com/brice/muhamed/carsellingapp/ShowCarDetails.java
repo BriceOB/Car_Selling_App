@@ -2,11 +2,14 @@ package com.brice.muhamed.carsellingapp;
 
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
@@ -29,7 +32,7 @@ public class ShowCarDetails extends ActionBarActivity {
         CarId = intent.getStringExtra(HomePage.EXTRA_MESSAGE);
 
         String[] CarDetails = dbh.getCarDetails(CarId);
-Car car = dbh.getCar(CarId);
+        Car car = dbh.getCar(CarId);
 
         ((TextView)findViewById(R.id.TextViewInputManufacture)).setText(car.getManufacturer());
         ((TextView)findViewById(R.id.TextViewInputDescription)).setText(car.getDescription());
@@ -42,22 +45,13 @@ Car car = dbh.getCar(CarId);
         ((TextView)findViewById(R.id.TextViewInputSellerAddress)).setText("");
         ((TextView)findViewById(R.id.TextViewInputSellerName)).setText("");
         ((TextView)findViewById(R.id.TextViewInputYear)).setText("");
-        /*
-      ((TextView)findViewById(R.id.TextViewInputManufacture)).setText(CarDetails[0]);
-        ((TextView)findViewById(R.id.TextViewInputDescription)).setText(CarDetails[1]);
-        ((TextView)findViewById(R.id.TextViewInputDoors)).setText(CarDetails[2]);
-        ((TextView)findViewById(R.id.TextViewInputFuel)).setText(CarDetails[3]);
-        ((TextView)findViewById(R.id.TextViewInputGearbox)).setText(CarDetails[4]);
-        ((TextView)findViewById(R.id.TextViewInputKm)).setText(CarDetails[0]);
-        ((TextView)findViewById(R.id.TextViewInputModel)).setText(CarDetails[0]);
-        ((TextView)findViewById(R.id.TextViewInputPrice)).setText(CarDetails[0]);
-        ((TextView)findViewById(R.id.TextViewInputSellerAddress)).setText(CarDetails[0]);
-        ((TextView)findViewById(R.id.TextViewInputSellerName)).setText(CarDetails[0]);
-        ((TextView)findViewById(R.id.TextViewInputYear)).setText(CarDetails[0]);
-*/
 
+        Bitmap thumbnail = (BitmapFactory.decodeFile(car.getPhotoPath()));
+        ImageView imageView = (ImageView)findViewById(R.id.imageViewInsertCarDetails);
+        int width = 960;
+        int height = thumbnail.getHeight() * width / thumbnail.getWidth();
+        imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

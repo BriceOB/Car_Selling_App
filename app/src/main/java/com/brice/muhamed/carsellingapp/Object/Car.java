@@ -28,7 +28,7 @@ public class Car {
                 //  int hp,int weight,
                 int price, String description,
                 String creationDate, String carDate, int toSell, int manufacturerId,
-                int sellerId) {
+                int sellerId, String PhotoPath) {
 
 
         Model = model;
@@ -49,7 +49,7 @@ public class Car {
 
     public Car( String model, int kilometers, String fuel, int doors,
                 int price, String description,
-                String creationDate, String carDate, int toSell, String manufacturer
+                String creationDate, String carDate, int toSell, String manufacturer, String PhotoPath
                 ) {
 
         Model = model;
@@ -62,6 +62,7 @@ public class Car {
         CarDate = carDate;
         ToSell = toSell;
         Manufacturer = manufacturer;
+        this.PhotoPath = PhotoPath;
 
     }
 
