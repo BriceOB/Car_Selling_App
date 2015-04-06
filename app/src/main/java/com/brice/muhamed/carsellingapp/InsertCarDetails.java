@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
@@ -99,9 +100,9 @@ public class InsertCarDetails extends ActionBarActivity {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd_HHmmss");
         String creationDate = sdf.format(new Date());
         EditText year = (EditText)findViewById(R.id.EditTextYear);
-        RadioButton RadioButtonSell = (RadioButton)findViewById(R.id.radioButtonToSell);
+        CheckBox CheckboxSell = (CheckBox)findViewById(R.id.radioButtonToSell);
         int toSell = 0;
-        if(RadioButtonSell.isChecked()){
+        if(CheckboxSell.isChecked()){
             toSell = 1;
         }
         Spinner manufacturer = (Spinner)findViewById(R.id.spinnerManufacture);
