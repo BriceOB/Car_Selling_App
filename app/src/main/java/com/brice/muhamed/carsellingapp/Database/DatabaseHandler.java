@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 7;
+    public static final int DATABASE_VERSION = 6;
     public static final String DATABASE_NAME =  "Car_Selling_Database.db";
 
 
@@ -56,13 +56,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addContact(String username, String password) {
+    public void addContact(String username, String password, String name, String address, String postcode, String email) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(SellerContract.EntrySeller.COLUMN_NAME_USERNAME, username );
         values.put(SellerContract.EntrySeller.COLUMN_NAME_PASSWORD, password);
+        values.put(SellerContract.EntrySeller.COLUMN_NAME_NAME, name);
+        values.put(SellerContract.EntrySeller.COLUMN_NAME_ADDRESS, address);
+        values.put(SellerContract.EntrySeller.COLUMN_NAME_POSTCODE, postcode);
+        values.put(SellerContract.EntrySeller.COLUMN_NAME_EMAIL, email);
 
         db.insert(SellerContract.EntrySeller.TABLE_NAME, null, values);
         db.close();
@@ -138,6 +142,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Weight,2000);
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_ToSell,1);
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Description,"This is a test");
+        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_SellerId,1);
         db.insert(CarContract.EntryCar.TABLE_NAME, null, valuesCar);
 
         Log.e("Default Car: ", "added ");
@@ -150,7 +155,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
         Cursor c = db.query(SellerContract.EntrySeller.TABLE_NAME,
-                new String[] { SellerContract.EntrySeller._ID },
+                new String[] { "*" },
                 SellerContract.EntrySeller.COLUMN_NAME_USERNAME + " = '" + Username + "' AND " +   SellerContract.EntrySeller.COLUMN_NAME_PASSWORD + " = '" + Password + "'" ,
                 null,
                 null,
@@ -163,7 +168,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
         c.moveToFirst();
-        Seller seller = new Seller(c.getInt(c.getColumnIndex(SellerContract.EntrySeller._ID)),Username,Password);
+        Seller seller = new Seller(c.getInt(c.getColumnIndex(SellerContract.EntrySeller._ID)),Username,Password, c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_NAME)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_ADDRESS)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_POSTCODE)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_EMAIL)));
         return seller;
 
     }
@@ -321,7 +326,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor c = db.query(ManufacturerContract.EntryManufacturer.TABLE_NAME + ", " + CarContract.EntryCar.TABLE_NAME ,
-                new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + CarContract.EntryCar.COLUMN_NAME_Kilometers+", "+CarContract.EntryCar.COLUMN_NAME_Fuel + ", "+ CarContract.EntryCar.COLUMN_NAME_Doors+ ", "+ CarContract.EntryCar.COLUMN_NAME_Price + ", "+ CarContract.EntryCar.COLUMN_NAME_Description+ ", "+ CarContract.EntryCar.COLUMN_NAME_CreationDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_CarDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_ToSell+ ", "+ ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath},
+                new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + CarContract.EntryCar.COLUMN_NAME_Kilometers+", "+CarContract.EntryCar.COLUMN_NAME_Fuel + ", "+ CarContract.EntryCar.COLUMN_NAME_Doors+ ", "+ CarContract.EntryCar.COLUMN_NAME_Price + ", "+ CarContract.EntryCar.COLUMN_NAME_Description+ ", "+ CarContract.EntryCar.COLUMN_NAME_CreationDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_CarDate+ ", "+ CarContract.EntryCar.COLUMN_NAME_ToSell+ ", "+ ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath + ", " + CarContract.EntryCar.COLUMN_NAME_SellerId},
     CarContract.EntryCar.TABLE_NAME+"."+CarContract.EntryCar._ID + " = '" + CarId  + "' AND " +
                       ManufacturerContract.EntryManufacturer.TABLE_NAME+"."+ ManufacturerContract.EntryManufacturer._ID + " = " + CarContract.EntryCar.COLUMN_NAME_ManufacturerId ,
                 null,
@@ -333,6 +338,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         c.moveToFirst();
 
         Car car = new Car(c.getString(0), c.getInt(1),c.getString(2), c.getInt(3), c.getInt(4), c.getString(5), c.getString(6), c.getString(7), c.getInt(8), c.getString(9), c.getString(10));
+        car.setSellerId(c.getInt(11));
 
         c.close();
         return car;
@@ -381,5 +387,31 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return cur.getInt(0);
 
     }
+
+    public Seller getSeller(int SellerId)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+
+        Cursor c = db.query(SellerContract.EntrySeller.TABLE_NAME,
+                new String[] { "*"},
+                SellerContract.EntrySeller._ID + " = '" + SellerId +"'" ,
+                null,
+                null,
+                null,
+                null);
+
+        if ( c.getCount() ==0){
+            return null;
+        }
+
+
+        c.moveToFirst();
+        Seller seller = new Seller(c.getInt(c.getColumnIndex(SellerContract.EntrySeller._ID)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_USERNAME)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_PASSWORD)), c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_NAME)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_ADDRESS)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_POSTCODE)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_EMAIL)));
+        return seller;
+
+    }
+
+
 
 }

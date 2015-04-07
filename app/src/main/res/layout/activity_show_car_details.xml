@@ -299,24 +299,8 @@
 
         <TableRow>
             <!-- Column 1 -->
-            <TextView
-                android:id="@+id/TextViewSellerPlace"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:padding="5dip"
-                android:layout_weight="1"
-                android:text="@string/place"
-                android:textColor="#ffffffff" />
 
             <!-- Column 2 -->
-            <TextView
-                android:id="@+id/TextViewInputSellerPlace"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:padding="5dip"
-                android:layout_weight="1"
-                android:text="@string/inputUser"
-                android:textColor="#ffffffff" />
         </TableRow>
 
         <TableRow>
@@ -333,28 +317,6 @@
             <!-- Column 2 -->
             <TextView
                 android:id="@+id/TextViewInputSellerPostalCode"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:padding="5dip"
-                android:layout_weight="1"
-                android:text="@string/inputUser"
-                android:textColor="#ffffffff" />
-        </TableRow>
-
-        <TableRow>
-            <!-- Column 1 -->
-            <TextView
-                android:id="@+id/TextViewSellerPhone"
-                android:layout_width="0dip"
-                android:layout_height="wrap_content"
-                android:padding="5dip"
-                android:layout_weight="1"
-                android:text="@string/phone"
-                android:textColor="#ffffffff" />
-
-            <!-- Column 2 -->
-            <TextView
-                android:id="@+id/TextViewInputSellerPhone"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
                 android:padding="5dip"

@@ -17,6 +17,10 @@ public final class SellerContract {
 
         public static final String COLUMN_NAME_USERNAME = "Username";
         public static final String COLUMN_NAME_PASSWORD = "Password";
+        public static final String COLUMN_NAME_NAME = "Name";
+        public static final String COLUMN_NAME_ADDRESS = "Address";
+        public static final String COLUMN_NAME_POSTCODE = "Postcode";
+        public static final String COLUMN_NAME_EMAIL = "Email";
 
         private static final String TEXT_TYPE = " TEXT";
         private static final String COMMA_SEP = ",";
@@ -26,7 +30,11 @@ public final class SellerContract {
                 TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY," +
                 COLUMN_NAME_USERNAME + TEXT_TYPE + COMMA_SEP +
-                COLUMN_NAME_PASSWORD + TEXT_TYPE +
+                COLUMN_NAME_PASSWORD + TEXT_TYPE + COMMA_SEP +
+                COLUMN_NAME_NAME + TEXT_TYPE + COMMA_SEP +
+                COLUMN_NAME_ADDRESS + TEXT_TYPE + COMMA_SEP +
+                COLUMN_NAME_POSTCODE + TEXT_TYPE + COMMA_SEP +
+                COLUMN_NAME_EMAIL + TEXT_TYPE +
                 " )";
 
         public static final String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;

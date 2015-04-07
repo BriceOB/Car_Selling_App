@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,12 +28,15 @@ public class HomePage extends ActionBarActivity {
     private DatabaseHandler dbh;
     private ArrayAdapter<String> adapterManufacturer;
     private Spinner spinnerManufacturer;
+    public      SharedPreferences sharedPref;
 
+private Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        sharedPref =  this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
 
        dbh  = new DatabaseHandler(getBaseContext());
 
@@ -68,8 +72,6 @@ public class HomePage extends ActionBarActivity {
 
 
 
-
-
     }
 
 
@@ -78,11 +80,13 @@ public class HomePage extends ActionBarActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_home_page, menu);
 
+        this.menu= menu;
 
-
-        SharedPreferences sharedPref = this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
 
         int i = sharedPref.getInt("com.brice.muhamed.carsellingapp.Id",0);
+
+
+
         if( i >0){
 
             MenuItem insert =  menu.findItem(R.id.action_insert);
@@ -152,6 +156,10 @@ public class HomePage extends ActionBarActivity {
     public void login(MenuItem item) {
         Intent intent = new Intent(this, Login.class);
         startActivity(intent);
+        menu.clear();
+        onCreateOptionsMenu(menu);
+
+
     }
 
     public void insert(MenuItem item) {
@@ -181,10 +189,15 @@ public class HomePage extends ActionBarActivity {
 
     public void logout(MenuItem item){
 
-        getSharedPreferences("com.brice.muhamed.carsellingapp.Id", MODE_PRIVATE).edit().clear().commit();
-        getSharedPreferences("com.brice.muhamed.carsellingapp.Id", MODE_PRIVATE).edit().putInt("com.brice.muhamed.carsellingapp.Id",0).commit();
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.clear();
+        editor.remove("com.brice.muhamed.carsellingapp.Id");
+        editor.commit();
+
+        sharedPref.edit().putInt("com.brice.muhamed.carsellingapp.Id", 0).commit();
        invalidateOptionsMenu();
-        recreate();
+        menu.clear();
+        onCreateOptionsMenu(menu);
 
 
     }

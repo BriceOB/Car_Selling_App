@@ -8,12 +8,20 @@ public class Seller {
     private int id;
     private String username;
     private String password;
+    private String name;
+    private String address;
+    private String postCode;
+    private String email;
 
-    public Seller(int id, String username, String password){
+    public Seller(int id, String username, String password, String name, String address,String postCode, String email){
 
         this.id = id;
         this.username = username;
         this.password = password;
+        this.name = name;
+        this.postCode = postCode;
+        this.email= email;
+        this.address = address;
 
     }
 
@@ -27,5 +35,21 @@ public class Seller {
 
     public int getId() {
         return id;
+    }
+
+    public String getname(){
+        return name;
+    }
+
+    public String getPostCode(){
+        return postCode;
+    }
+
+    public String getEmail(){
+        return email;
+    }
+
+    public String getAddress(){
+        return address;
     }
 }

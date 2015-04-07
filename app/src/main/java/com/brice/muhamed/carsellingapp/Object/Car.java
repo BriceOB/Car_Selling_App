@@ -75,6 +75,10 @@ public class Car {
 
     }
 
+    public void setSellerId(int Id){
+        SellerId = Id;
+    }
+
     public void setId(int id){
 
         Id = id;

@@ -90,8 +90,7 @@ public class Login extends ActionBarActivity {
 
             ShowToast("Welcome " + seller.getUsername() + " " + sharedPref.getInt("com.brice.muhamed.carsellingapp.Id",0));
 
-            Activity homePage = getParent();
-            homePage.recreate();
+
 
             this.finish();
             return;

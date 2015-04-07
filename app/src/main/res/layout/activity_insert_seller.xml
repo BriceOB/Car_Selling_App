@@ -87,27 +87,6 @@
             android:textColorHint="#ffcdcdcd"/>
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPostalAddress"
-            android:id="@+id/editTextPlace"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"
-            android:hint="@string/place"
-            android:textColor="#ffffffff"
-            android:textColorHint="#ffcdcdcd"/>
-
-        <EditText
-            android:id="@+id/EditTextPhone"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="@string/phone"
-            android:inputType="phone"
-            android:textColor="#ffffffff"
-            android:textColorHint="#ffcdcdcd"/>
-
-        <EditText
             android:id="@+id/EditTextEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
