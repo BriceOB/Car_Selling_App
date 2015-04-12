@@ -74,6 +74,13 @@ private Menu menu;
 
     }
 
+    @Override
+    public void onRestart()
+    {
+        super.onRestart();
+        finish();
+        startActivity(getIntent());
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
