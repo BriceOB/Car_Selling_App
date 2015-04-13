@@ -95,6 +95,10 @@
     <string name="account">Benutzerkonto</string>
     <string name="Image">Foto</string>
     <string name="AddPhoto">Foto hinzufügen</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="german">German</string>
+    <string name="title_activity_language">Language</string>
 
     <string-array name="PopUpIMage">
         <item>Take a photo</item>

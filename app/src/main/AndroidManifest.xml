@@ -3,12 +3,14 @@
     package="com.brice.muhamed.carsellingapp" >
 
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
+
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -71,6 +73,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.brice.muhamed.carsellingapp.CarsForSale" />
+        </activity>
+        <activity
+            android:name=".Language"
+            android:label="@string/title_activity_language"
+            android:parentActivityName=".HomePage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.brice.muhamed.carsellingapp.HomePage" />
         </activity>
     </application>
 

@@ -112,4 +112,8 @@
     <string name="account">Useraccount</string>
     <string name="Image">Photo</string>
     <string name="AddPhoto">Add Photo</string>
+    <string name="english">English</string>
+    <string name="french">French</string>
+    <string name="german">German</string>
+    <string name="title_activity_language">Language</string>
 </resources>

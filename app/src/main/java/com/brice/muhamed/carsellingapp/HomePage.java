@@ -184,8 +184,8 @@ private Menu menu;
     }
 
     public void settings(MenuItem item) {
-
-
+        Intent intent = new Intent(this, Language.class);
+        startActivity(intent);
     }
 
     public void about(MenuItem item) {
