@@ -90,12 +90,11 @@ private Menu menu;
         adapterModel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerModel.setAdapter(adapterModel);
 
-
-
         SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
 
         Configuration config = getBaseContext().getResources().getConfiguration();
 
+        //language
         String lang = settings.getString(getString(R.string.pref_locale), "");
         if (! "".equals(lang) && ! config.locale.getLanguage().equals(lang))
         {
@@ -124,10 +123,7 @@ private Menu menu;
 
         this.menu= menu;
 
-
         int i = sharedPref.getInt("com.brice.muhamed.carsellingapp.Id",0);
-
-
 
         if( i >0){
 
@@ -175,10 +171,10 @@ private Menu menu;
         adapterModel.notifyDataSetChanged();
     }
 
+
     public void SearchCars(View view) {
 
         Intent intent = new Intent(this, CarsForSale.class);
-
 
         EditText yearFrom = (EditText)findViewById(R.id.editTextYearFrom);
         EditText yearTo = (EditText)findViewById(R.id.editTextYearTo);

@@ -44,6 +44,7 @@ public class ShowCarDetails extends ActionBarActivity {
         Intent intent = getIntent();
         CarId = intent.getStringExtra(HomePage.EXTRA_MESSAGE);
 
+        //Get car's specifications
         String[] CarDetails = dbh.getCarDetails(CarId);
         Car car = dbh.getCar(CarId);
         Seller user = dbh.getSeller(UserId);
@@ -73,7 +74,6 @@ public class ShowCarDetails extends ActionBarActivity {
         ((TextView)findViewById(R.id.TextViewInputSellerPostalCode)).setText(seller.getPostCode());
 
 
-
         if(!car.getPhotoPath().equals("")){
             Bitmap thumbnail = (BitmapFactory.decodeFile(car.getPhotoPath()));
             ImageView imageView = (ImageView)findViewById(R.id.imageViewShowCarDetails);
@@ -86,8 +86,6 @@ public class ShowCarDetails extends ActionBarActivity {
 
             imageView.setImageResource(R.drawable.ic_no_picture);
         }
-
-        //if(dbh.getcarsellerid)
 
     }
 

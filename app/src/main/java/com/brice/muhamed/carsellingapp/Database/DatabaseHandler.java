@@ -118,6 +118,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
+    //Set Manufacturers in the database
     public void setDefaultDb(SQLiteDatabase db) {
         Log.i("Start:",""+  " added");
         String[] DefaultModel = {"Acura","Alfa Romeo","AMC","Ariel","Aston Martin","Audi","Austin Healey","Bentley","BMW","Bugatti","Buick","Cadillac","Caterham","Chevrolet","Chrysler","Citroen","Daewoo","Daihatsu","Datsun","De Tomaso","Dodge","Eagle","Ferrari","Fiat","Fisker","Ford","Geo","GMC","Holden","Honda","Hummer","Hyundai","Infiniti","Isuzu","Jaguar","Jeep","Kia","Koenigsegg","Lamborghini","Lancia","Land Rover","Lexus","Lincoln","Lotus","Maserati","Maybach","Mazda","McLaren","Mercedes","Mercury","MG","Mini","Mitsubishi","Morgan","Mosler Rossion","Nissan","Noble","Oldsmobile","Opel","Pagani","Peugeot","Plymouth","Pontiac","Porsche","Proton","Ram","Renault","Rolls-Royce","Saab","Saleen","Saturn","Scion","Seat","Shelby","Skoda","Smart","Subaru","Suzuki","Tesla","Toyota","Triumph","Vauxhall","VW","Volvo","Westfield","OTHER"};
@@ -128,25 +129,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.insert(ManufacturerContract.EntryManufacturer.TABLE_NAME, null, valuesManufacturer);
             Log.e("ELEMENT:",""+i + " added");
         }
-/*
-        ContentValues valuesCar = new ContentValues();
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Model,"AcuraModel");
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_ManufacturerId,1);
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_ToSell,1);
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_CarDate,"2000");
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_CreationDate,"2000");
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Doors,5);
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Fuel,"Diesel");
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Kilometers,200000);
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Hp,140);
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Weight,2000);
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_ToSell,1);
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Description,"This is a test");
-        valuesCar.put(CarContract.EntryCar.COLUMN_NAME_SellerId,1);
-        db.insert(CarContract.EntryCar.TABLE_NAME, null, valuesCar);
 
-        Log.e("Default Car: ", "added ");
-*/
     }
 
     public Boolean checkUser(String Username){
@@ -185,7 +168,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if ( c.getCount() ==0){
             return null;
         }
-
 
         c.moveToFirst();
         Seller seller = new Seller(c.getInt(c.getColumnIndex(SellerContract.EntrySeller._ID)),Username,Password, c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_NAME)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_ADDRESS)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_POSTCODE)),c.getString(c.getColumnIndex(SellerContract.EntrySeller.COLUMN_NAME_EMAIL)));
@@ -238,7 +220,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return 0;
     }
 
-
+    //Get all cars that own to a user
     public String[][] getMyCars(int UserId){
 
         if(UserId==0)
@@ -269,7 +251,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
-
+    //Get result from the search of the first page
     public String[][] GetResultSearch(String Brand, String Model, String Year, String YearTo, String KmFrom, String KmTo, String PriceFrom, String PriceTo, String Order){
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -278,15 +260,15 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         switch (Order){
 
             //Date
-            case "1":
+            case "0":
               order =  CarContract.EntryCar.COLUMN_NAME_CarDate;
 
             //Price
-            case "2":
+            case "1":
                 order = CarContract.EntryCar.COLUMN_NAME_Price;
 
             //Kilometer
-            case "3" :
+            case "2" :
                 order = CarContract.EntryCar.COLUMN_NAME_Kilometers;
 
             default:
@@ -331,6 +313,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return null;
     }
 
+    //get details in string of a car
     public String[] getCarDetails(String CarId){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -361,6 +344,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
+    // get car
     public Car getCar(String CarId){
 
         SQLiteDatabase db = this.getWritableDatabase();

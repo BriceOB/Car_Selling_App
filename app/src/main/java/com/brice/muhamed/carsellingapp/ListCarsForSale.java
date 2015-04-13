@@ -46,9 +46,7 @@ public class ListCarsForSale extends ArrayAdapter<String> {
 
         ImageView imageViewCar = (ImageView) rowView.findViewById(R.id.imageViewCar);
 
-
-
-
+        //Check if an image exists
         if(!Cars[position][4].equals("")){
             Bitmap thumbnail = (BitmapFactory.decodeFile(Cars[position][4]));
             ImageView imageView = (ImageView)rowView.findViewById(R.id.imageViewCar);

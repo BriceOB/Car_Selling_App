@@ -58,7 +58,6 @@ public class InsertCarDetails extends ActionBarActivity {
         DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_insert_car_details));
 
-
         //Get intent
         Intent intent = getIntent();
         CarId = intent.getStringExtra(HomePage.EXTRA_MESSAGE);
@@ -82,6 +81,7 @@ public class InsertCarDetails extends ActionBarActivity {
         Spinner spinnerGearbox = (Spinner) findViewById(R.id.spinnerGearbox);
         spinnerGearbox.setAdapter(adapterGearbox);
 
+        //Set Id for modification of car's specifications
         if(CarId!=null){
 
             Car car = dbh.getCar(CarId);
@@ -113,12 +113,6 @@ public class InsertCarDetails extends ActionBarActivity {
                 imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
                 ImagePath = car.getPhotoPath();
             }
-            else{
-                /*ImageView imageView = (ImageView)findViewById(R.id.imageViewShowCarDetails);
-
-                imageView.setImageResource(R.drawable.ic_no_picture);*/
-            }
-
 
             model.setText(car.getModel());
             km.setText(car.getKilometers()+"");
@@ -133,7 +127,6 @@ public class InsertCarDetails extends ActionBarActivity {
 
 
         }
-
 
         ImageView imageView = (ImageView)findViewById(R.id.imageViewInsertCarDetails);
         imageView = iv;
@@ -169,7 +162,6 @@ public class InsertCarDetails extends ActionBarActivity {
 
     public void SubmitCarDetails(View view){
 
-
         DatabaseHandler dbh = new DatabaseHandler(this.getBaseContext());
 
         EditText model = (EditText)findViewById(R.id.EditTextModel);
@@ -192,6 +184,7 @@ public class InsertCarDetails extends ActionBarActivity {
         SharedPreferences sharedId = getPreferences(Context.MODE_PRIVATE);
         int id = sharedId.getInt("Id",0);
 
+        //Check that int values aren't null to convert them in string
         if(km.getText().toString().equals("")){
 
             km.setText("0");
@@ -209,7 +202,6 @@ public class InsertCarDetails extends ActionBarActivity {
             year.setText("0");
         }
 
-
         Car car = new Car(model.getText().toString(),
                 Integer.parseInt(km.getText().toString()),
                 fuel.getSelectedItem().toString(),
@@ -223,14 +215,15 @@ public class InsertCarDetails extends ActionBarActivity {
                 id, ImagePath
         );
 
+        //No cardId -> New Car
         if(CarId==null){
             SharedPreferences sharedPref = this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
-
 
             int UserId = sharedPref.getInt("com.brice.muhamed.carsellingapp.Id", 0);
             dbh.InsertCarInfos(car, UserId);
 
         }
+        //CarId -> modification
         else{
             dbh.updateCarInfos(car, CarId,manufacturer.getSelectedItem().toString());
         }
@@ -246,6 +239,7 @@ public class InsertCarDetails extends ActionBarActivity {
         selectImage();
     }
 
+    //Select an image from camera or gallery
     private void selectImage() {
         final CharSequence[] options = getResources().getStringArray(R.array.PopUpIMage);
 
@@ -262,16 +256,10 @@ public class InsertCarDetails extends ActionBarActivity {
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intent, 1);
                 }else if(options[item].equals("Take from gallery") || options[item].equals("Von Gallerie auswählen") || options[item].equals("Choisir de la Gallerie")) {
-//                    Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-//                    intent.setType("image/*");
-//                    startActivityForResult(Intent.createChooser(intent, "Select File"),2);
 
                     Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     startActivityForResult(intent, 2);
-//
-//                    Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-//                    photoPickerIntent.setType("image/*");
-//                    startActivityForResult(photoPickerIntent, 2);
+
 
                 } else {
                     dialog.dismiss();
@@ -281,6 +269,7 @@ public class InsertCarDetails extends ActionBarActivity {
         builder.show();
     }
 
+    //Method to save image
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

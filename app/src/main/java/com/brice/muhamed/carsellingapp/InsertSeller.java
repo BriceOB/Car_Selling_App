@@ -30,9 +30,7 @@ public class InsertSeller extends ActionBarActivity {
         setContentView(R.layout.activity_insert_seller);
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_insert_seller));
 
-
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -54,7 +54,7 @@ public class CarsForSale extends ActionBarActivity {
 
         if(Cars!=null){
 
-            //http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html
+            //source itemlistener: http://www.learn2crack.com/2013/10/android-custom-listview-images-text-example.html
 
             ListCarsForSale adapter = new
                     ListCarsForSale(CarsForSale.this,Cars);
