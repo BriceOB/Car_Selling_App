@@ -32,6 +32,7 @@ public class HomePage extends ActionBarActivity {
     private ArrayAdapter<String> adapterManufacturer;
     private Spinner spinnerManufacturer;
     public      SharedPreferences sharedPref;
+    private   Spinner spinnerOrder;
 
 
     private Locale locale = null;
@@ -77,7 +78,7 @@ private Menu menu;
                 });
 
         //Spinner Order
-        Spinner spinnerOrder = (Spinner) findViewById(R.id.spinnerOrder);
+        spinnerOrder = (Spinner) findViewById(R.id.spinnerOrder);
         ArrayAdapter<CharSequence> adapterOrder = ArrayAdapter.createFromResource(this, R.array.ListOrder, R.layout.my_spinner_layout);
         adapterOrder.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerOrder.setAdapter(adapterOrder);

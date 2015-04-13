@@ -45,7 +45,8 @@
         <activity
             android:name=".InsertCarDetails"
             android:label="@string/title_activity_insert_car_details"
-            android:parentActivityName=".HomePage" >
+            android:parentActivityName=".HomePage"
+         >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.brice.muhamed.carsellingapp.HomePage" />

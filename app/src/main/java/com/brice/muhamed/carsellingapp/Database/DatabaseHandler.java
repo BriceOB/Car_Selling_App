@@ -253,6 +253,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public String[][] GetResultSearch(String Brand, String Model, String Year, String YearTo, String KmFrom, String KmTo, String PriceFrom, String PriceTo, String Order){
         SQLiteDatabase db = this.getWritableDatabase();
 
+        switch (Order){
+            //Date
+            case "1":
+
+
+        }
+
         Cursor c = db.query(ManufacturerContract.EntryManufacturer.TABLE_NAME + ", " + CarContract.EntryCar.TABLE_NAME,
                 new String[] { CarContract.EntryCar.COLUMN_NAME_Model+", " + ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND +", "+ CarContract.EntryCar.COLUMN_NAME_Description + ", "+ CarContract.EntryCar.COLUMN_NAME_Price+ ", "+ CarContract.EntryCar.COLUMN_NAME_PhotoPath + ", " + CarContract.EntryCar.TABLE_NAME + "."+CarContract.EntryCar._ID},
                 ManufacturerContract.EntryManufacturer.COLUMN_NAME_BRAND + " = '" + Brand + "' AND " +
