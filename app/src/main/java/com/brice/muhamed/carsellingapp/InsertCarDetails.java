@@ -204,6 +204,10 @@ public class InsertCarDetails extends ActionBarActivity {
 
             price.setText("0");
         }
+        if(year.getText().toString().equals("")){
+
+            year.setText("0");
+        }
 
 
         Car car = new Car(model.getText().toString(),
