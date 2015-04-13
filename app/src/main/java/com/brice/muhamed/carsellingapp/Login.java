@@ -88,7 +88,7 @@ public class Login extends ActionBarActivity {
             SharedPreferences sharedPref = this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
             sharedPref.edit().putInt("com.brice.muhamed.carsellingapp.Id", seller.getId()).apply();
 
-            ShowToast("Welcome " + seller.getUsername() + " " + sharedPref.getInt("com.brice.muhamed.carsellingapp.Id",0));
+            ShowToast("Welcome " + seller.getUsername() );
 
 
 

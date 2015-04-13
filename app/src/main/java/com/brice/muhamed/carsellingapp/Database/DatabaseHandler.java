@@ -128,7 +128,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             db.insert(ManufacturerContract.EntryManufacturer.TABLE_NAME, null, valuesManufacturer);
             Log.e("ELEMENT:",""+i + " added");
         }
-
+/*
         ContentValues valuesCar = new ContentValues();
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_Model,"AcuraModel");
         valuesCar.put(CarContract.EntryCar.COLUMN_NAME_ManufacturerId,1);
@@ -146,7 +146,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(CarContract.EntryCar.TABLE_NAME, null, valuesCar);
 
         Log.e("Default Car: ", "added ");
-
+*/
     }
 
     public Seller checkUserPassword(String Username, String Password){

@@ -49,7 +49,7 @@ public class ListCarsForSale extends ArrayAdapter<String> {
 
 
 
-        if(Cars[position][4]!=null){
+        if(!Cars[position][4].equals("")){
             Bitmap thumbnail = (BitmapFactory.decodeFile(Cars[position][4]));
             ImageView imageView = (ImageView)rowView.findViewById(R.id.imageViewCar);
             int width = 960;

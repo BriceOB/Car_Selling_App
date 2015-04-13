@@ -38,21 +38,17 @@ public class CarsForSale extends ActionBarActivity {
         Intent intent = getIntent();
         String[] message = intent.getStringArrayExtra(HomePage.EXTRA_MESSAGE);
 
+        //Show all cars from the user
         if(message[0].equals("MyCars")){
 
             SharedPreferences sharedPref = this.getSharedPreferences("com.brice.muhamed.carsellingapp", Context.MODE_PRIVATE);
             int UserId = sharedPref.getInt("com.brice.muhamed.carsellingapp.Id", 0);
-
-            Toast.makeText(getApplicationContext(), "Id : "+UserId, Toast.LENGTH_SHORT).show();
-
             Cars = dbh.getMyCars(UserId);
-
 
         }
         else{
            Cars = dbh.GetResultSearch(message[0],message[1],message[2],message[3],message[4],message[5],message[6],message[7],message[8]);
         }
-
 
         if(Cars!=null){
 
@@ -66,7 +62,6 @@ public class CarsForSale extends ActionBarActivity {
                                             @Override
                                             public void onItemClick(AdapterView<?> parent, View view,
                                                                     int position, long id) {
-                                                Toast.makeText(CarsForSale.this, "Element: " + Cars[position][5], Toast.LENGTH_SHORT).show();
 
                                                 Intent intent = new Intent(CarsForSale.this, ShowCarDetails.class);
                                                 intent.putExtra(EXTRA_MESSAGE, Cars[position][5]);

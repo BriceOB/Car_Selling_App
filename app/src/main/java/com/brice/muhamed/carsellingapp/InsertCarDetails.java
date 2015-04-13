@@ -101,12 +101,20 @@ public class InsertCarDetails extends ActionBarActivity {
             EditText year = (EditText)findViewById(R.id.EditTextYear);
             CheckBox RadioButtonSell = (CheckBox)findViewById(R.id.radioButtonToSell);
 
-            Bitmap thumbnail = (BitmapFactory.decodeFile(car.getPhotoPath()));
-            ImageView imageView = (ImageView)findViewById(R.id.imageViewInsertCarDetails);
-            int width = 200;
-            int height = thumbnail.getHeight() * width / thumbnail.getWidth();
-            imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
-            ImagePath = car.getPhotoPath();
+            if(!car.getPhotoPath().equals("")){
+                Bitmap thumbnail = (BitmapFactory.decodeFile(car.getPhotoPath()));
+                ImageView imageView = (ImageView)findViewById(R.id.imageViewInsertCarDetails);
+                int width = 200;
+                int height = thumbnail.getHeight() * width / thumbnail.getWidth();
+                imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
+                ImagePath = car.getPhotoPath();
+            }
+            else{
+                ImageView imageView = (ImageView)findViewById(R.id.imageViewShowCarDetails);
+
+                imageView.setImageResource(R.drawable.ic_no_picture);
+            }
+
 
             model.setText(car.getModel());
             km.setText(car.getKilometers()+"");

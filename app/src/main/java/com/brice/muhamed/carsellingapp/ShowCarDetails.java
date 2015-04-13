@@ -79,6 +79,11 @@ public class ShowCarDetails extends ActionBarActivity {
             int height = thumbnail.getHeight() * width / thumbnail.getWidth();
             imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
         }
+        else{
+            ImageView imageView = (ImageView)findViewById(R.id.imageViewShowCarDetails);
+
+            imageView.setImageResource(R.drawable.ic_no_picture);
+        }
 
         //if(dbh.getcarsellerid)
 
