@@ -234,12 +234,16 @@ public class InsertCarDetails extends ActionBarActivity {
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int item) {
-                if (options[item].equals("Take a photo")) {
+                if (options[item].equals("Camera") ||
+                    options[item].equals("Kamera") ||
+                    options[item].equals("Appareil photo")) {
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     File f = new File(android.os.Environment.getExternalStorageDirectory(), "temp.jpg");
                     intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(f));
                     startActivityForResult(intent, 1);
-                }else if(options[item].equals("Take from gallery") || options[item].equals("Von Gallerie auswählen") || options[item].equals("Choisir de la Gallerie")) {
+                }else if(options[item].equals("Take from gallery") ||
+                         options[item].equals("Von Gallerie auswählen") ||
+                         options[item].equals("Choisir de la Gallerie")) {
 //                    Intent intent = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 //                    intent.setType("image/*");
 //                    startActivityForResult(Intent.createChooser(intent, "Select File"),2);

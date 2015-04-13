@@ -36,7 +36,7 @@
     </string-array>
 
     <string-array name="PopUpIMage">
-        <item>Take a photo</item>
+        <item>Camera</item>
         <item>Take from gallery</item>
         <item>Cancel</item>
     </string-array>
@@ -93,13 +93,11 @@
     <string name="submit">Submit</string>
 
     <string-array name="gearboxList">
-        <item>Getriebeart</item>
         <item>Automatikgetriebe</item>
         <item>Schaltgetriebe</item>
     </string-array>
 
     <string-array name="fuelList">
-        <item>Fuel</item>
         <item>Diesel</item>
         <item>Gasoline</item>
     </string-array>

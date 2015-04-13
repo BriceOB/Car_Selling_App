@@ -21,15 +21,15 @@
     <string name="menu">Menü</string>
 
 
-    <string name="drawer_open">Open menu</string>
-    <string name="drawer_close">Close menu</string>
-    <string name="action_Login">Login</string>
+    <string name="drawer_open">Menü öffnen</string>
+    <string name="drawer_close">Menü schliessen</string>
+    <string name="action_Login">Einloggen</string>
 
     <string-array name="ListMenu">
-        <item>Home page</item>
-        <item>Login</item>
-        <item>MyCars</item>
-        <item>Insert Car </item>
+        <item>Startseite</item>
+        <item>Einloggen</item>
+        <item>Meine Autos</item>
+        <item>Auto einfügen</item>
     </string-array>
 
     <string name="title_activity_infos">Infos</string>
@@ -37,61 +37,52 @@
 
     <!-- Infos page -->
     <string name="Infos">Infos</string>
-    <string name="Credit">Created by Muhamed and Brice</string>
+    <string name="Credit">Erstellt von Muhamed und Brice</string>
 
     <!-- -->
 
-    <string name="title_activity_show_car_details">ShowCarDetails</string>
-    <string name="manufacture">Brand</string>
-    <string name="model">Model</string>
-    <string name="weight">Weight</string>
-    <string name="hp">HP</string>
-    <string name="km">Kilometers</string>
+    <string name="title_activity_show_car_details">Autodetails anzeigen</string>
+    <string name="manufacture">Marke</string>
+    <string name="model">Modell</string>
+    <string name="weight">Gewicht</string>
+    <string name="hp">PS</string>
+    <string name="km">Kilometer</string>
     <string name="doors">Doors</string>
-    <string name="description">Additional description</string>
-    <string name="price">Price</string>
-    <string name="fuel">Fuel</string>
+    <string name="description">Weitere Beschreibung</string>
+    <string name="price">Preis</string>
+    <string name="fuel">Treibstoff</string>
     <string name="name">Name</string>
-    <string name="address">Address</string>
-    <string name="postalCode">Postal code</string>
-    <string name="place">Place</string>
-    <string name="car">Car</string>
+    <string name="address">Adressee</string>
+    <string name="postalCode">Postleitzahl</string>
+    <string name="place">Ort</string>
+    <string name="car">Auto</string>
     <string name="inputUser">---</string>
-    <string name="year">Year</string>
-    <string name="gearbox">Gearbox</string>
-    <string name="seller">Seller</string>
-    <string name="phone">Phone</string>
+    <string name="year">Jarh</string>
+    <string name="gearbox">Schaltgetriebe</string>
+    <string name="seller">Verkäufer</string>
+    <string name="phone">Telefon</string>
     <string name="email">E-mail</string>
-    <string name="ToSell">ToSell</string>
+    <string name="ToSell">Zum verkaufen</string>
     <string name="colorText">#FFFFFFFF</string>
-    <string name="title_activity_insert_car_details">Insert_car_details</string>
+    <string name="title_activity_insert_car_details">Autodetails einfügen</string>
 
-    <string name="submit">Submit</string>
-
-    <string-array name="manufacturerList">
-        <item>Audi</item>
-        <item>BMW</item>
-        <item>Mercedes-Benz</item>
-        <item>Volkswagen</item>
-    </string-array>
+    <string name="submit">Validieren</string>
 
     <string-array name="gearboxList">
-        <item>Gearbox</item>
-        <item>Automatic</item>
-        <item>Manual</item>
+        <item>Automatik</item>
+        <item>Manuell</item>
     </string-array>
 
     <string-array name="fuelList">
-        <item>Fuel</item>
         <item>Diesel</item>
-        <item>Gasoline</item>
+        <item>Benzin</item>
     </string-array>
-    <string name="title_activity_insert_seller">InsertSeller</string>
-    <string name="title_activity_about">About</string>
-    <string name="action_insert">Insert</string>
-    <string name="action_myCars">My cars</string>
-    <string name="action_about">About</string>
-    <string name="action_login">Login</string>
+    <string name="title_activity_insert_seller">Verkäufer einfügen</string>
+    <string name="title_activity_about">Über uns</string>
+    <string name="action_insert">Einfügen</string>
+    <string name="action_myCars">Meine Autos</string>
+    <string name="action_about">Über uns</string>
+    <string name="action_login">Einloggen</string>
     <string name="account">Benutzerkonto</string>
     <string name="Image">Foto</string>
     <string name="AddPhoto">Foto hinzufügen</string>
@@ -110,7 +101,7 @@
     <string name="WrongPassword">"Wrong Username/Password "</string>
 
     <string-array name="PopUpIMage">
-        <item>Take a photo</item>
+        <item>Kamera</item>
         <item>Von Gallerie auswählen</item>
         <item>Abbrechen</item>
     </string-array>
