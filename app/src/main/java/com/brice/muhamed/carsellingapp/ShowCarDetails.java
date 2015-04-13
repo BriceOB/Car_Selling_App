@@ -30,6 +30,8 @@ public class ShowCarDetails extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_car_details);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_show_car_details));
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 

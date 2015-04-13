@@ -18,6 +18,8 @@ public class Language extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
+
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_language));
     }
 
 

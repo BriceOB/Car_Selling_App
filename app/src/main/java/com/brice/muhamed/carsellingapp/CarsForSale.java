@@ -28,6 +28,8 @@ public class CarsForSale extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cars_for_sale);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_cars_for_sale));
+
 
         DatabaseHandler dbh = new DatabaseHandler(getBaseContext());
 

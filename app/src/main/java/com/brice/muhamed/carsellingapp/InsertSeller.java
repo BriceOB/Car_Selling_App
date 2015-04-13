@@ -28,6 +28,8 @@ public class InsertSeller extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_insert_seller);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_insert_seller));
+
 
     }
 

@@ -29,6 +29,8 @@ public class Login extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_login));
+
     }
 
 
