@@ -192,6 +192,20 @@ public class InsertCarDetails extends ActionBarActivity {
         SharedPreferences sharedId = getPreferences(Context.MODE_PRIVATE);
         int id = sharedId.getInt("Id",0);
 
+        if(km.getText().toString().equals("")){
+
+            km.setText("0");
+        }
+        if(doors.getText().toString().equals("")){
+
+            doors.setText("0");
+        }
+        if(price.getText().toString().equals("")){
+
+            price.setText("0");
+        }
+
+
         Car car = new Car(model.getText().toString(),
                 Integer.parseInt(km.getText().toString()),
                 fuel.getSelectedItem().toString(),
