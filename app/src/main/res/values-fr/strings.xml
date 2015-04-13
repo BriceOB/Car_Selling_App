@@ -102,7 +102,7 @@
     <string name="FieldNotEmpty">Ce champ ne peut être vide !</string>
     <string name="CarAdded">Voiture ajouté avec succès</string>
     <string name="PasswordNotEmpty">Le mot de passe ne peut pas être vide !</string>
-    <string name="UsernameNotempty">L'utilisateur ne peut pas être vide !</string>
+    <string name="UsernameNotempty">L\'utilisateur ne peut pas être vide !</string>
     <string name="WrongPassword">"Mot de passe/Uitlisatuer incorrect "</string>
 
     <string-array name="PopUpIMage">
