@@ -98,7 +98,7 @@
     <string name="english">Englisch</string>
     <string name="french">Französisch</string>
     <string name="german">Deutsch</string>
-    <string name="title_activity_language">Language</string>
+    <string name="title_activity_language">Sprache</string>
     <string name="pref_locale">de</string>
 
     <string-array name="PopUpIMage">

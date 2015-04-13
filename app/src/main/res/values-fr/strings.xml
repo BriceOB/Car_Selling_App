@@ -112,7 +112,7 @@
     <string name="english">Anglais</string>
     <string name="french">Français</string>
     <string name="german">Allemand</string>
-    <string name="title_activity_language">Language</string>
+    <string name="title_activity_language">Langue</string>
     <string name="pref_locale">fr</string>
 
     <string-array name="PopUpIMage">
