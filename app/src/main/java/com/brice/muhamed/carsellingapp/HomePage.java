@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.widget.Toast;
 import com.brice.muhamed.carsellingapp.Database.DatabaseHandler;
 import com.brice.muhamed.carsellingapp.Database.ManufacturerContract;
 
+import java.util.Locale;
+
 
 public class HomePage extends ActionBarActivity {
 
@@ -29,6 +32,21 @@ public class HomePage extends ActionBarActivity {
     private ArrayAdapter<String> adapterManufacturer;
     private Spinner spinnerManufacturer;
     public      SharedPreferences sharedPref;
+
+
+    private Locale locale = null;
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig)
+    {
+        super.onConfigurationChanged(newConfig);
+        if (locale != null)
+        {
+            newConfig.locale = locale;
+            Locale.setDefault(locale);
+            getBaseContext().getResources().updateConfiguration(newConfig, getBaseContext().getResources().getDisplayMetrics());
+        }
+    }
 
 private Menu menu;
     @Override
@@ -69,6 +87,21 @@ private Menu menu;
         adapterModel = new ArrayAdapter<String>(this, R.layout.my_spinner_layout, dbh.getModel(spinnerManufacturer.getItemAtPosition(0).toString()));
         adapterModel.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerModel.setAdapter(adapterModel);
+
+
+
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+
+        Configuration config = getBaseContext().getResources().getConfiguration();
+
+        String lang = settings.getString(getString(R.string.pref_locale), "");
+        if (! "".equals(lang) && ! config.locale.getLanguage().equals(lang))
+        {
+            locale = new Locale(lang);
+            Locale.setDefault(locale);
+            config.locale = locale;
+            getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        }
 
 
 
