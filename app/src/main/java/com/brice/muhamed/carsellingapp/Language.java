@@ -1,5 +1,6 @@
 package com.brice.muhamed.carsellingapp;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -48,6 +49,7 @@ public class Language extends ActionBarActivity {
         Configuration config = new Configuration();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        restartActivity();
     }
 
     public void setLanguageFR(View view) {
@@ -56,6 +58,7 @@ public class Language extends ActionBarActivity {
         Configuration config = new Configuration();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        restartActivity();
     }
 
     public void setLanguageDE(View view) {
@@ -64,6 +67,13 @@ public class Language extends ActionBarActivity {
         Configuration config = new Configuration();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        restartActivity();
 
+    }
+
+    private void restartActivity() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
     }
 }
