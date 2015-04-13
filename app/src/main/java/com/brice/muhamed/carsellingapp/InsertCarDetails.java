@@ -110,9 +110,9 @@ public class InsertCarDetails extends ActionBarActivity {
                 ImagePath = car.getPhotoPath();
             }
             else{
-                ImageView imageView = (ImageView)findViewById(R.id.imageViewShowCarDetails);
+                /*ImageView imageView = (ImageView)findViewById(R.id.imageViewShowCarDetails);
 
-                imageView.setImageResource(R.drawable.ic_no_picture);
+                imageView.setImageResource(R.drawable.ic_no_picture);*/
             }
 
 

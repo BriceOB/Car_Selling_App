@@ -117,7 +117,7 @@ public class ShowCarDetails extends ActionBarActivity {
         Intent intent = new Intent(this, InsertCarDetails.class);
         intent.putExtra(HomePage.EXTRA_MESSAGE, CarId);
         startActivity(intent);
-        this.recreate();
+        this.finish();
     }
 
     public void delete(View view) {
