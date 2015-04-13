@@ -114,6 +114,14 @@
     <string name="german">Allemand</string>
     <string name="title_activity_language">Langue</string>
     <string name="pref_locale">fr</string>
+    <string name="contactAdd">Contact successfully added</string>
+    <string name="ContactUsed">Contact already used</string>
+    <string name="NoCar">no car available</string>
+    <string name="FieldNotEmpty">This field cannot be empty !</string>
+    <string name="CarAdded">Car successfully added</string>
+    <string name="PasswordNotEmpty">The password cannot be empty !</string>
+    <string name="UsernameNotempty">The username cannot be empty !</string>
+    <string name="WrongPassword">"Wrong Username/Password "</string>
 
     <string-array name="PopUpIMage">
         <item>Take a photo</item>

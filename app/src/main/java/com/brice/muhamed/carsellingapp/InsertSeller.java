@@ -65,12 +65,19 @@ public class InsertSeller extends ActionBarActivity {
         String place = ((TextView)findViewById(R.id.EditTextPlace)).getText().toString();
         String email = ((TextView)findViewById(R.id.EditTextEmail)).getText().toString();
 
-        dbh.addContact(username,password,firstname,address,place,email);
+        //Check if username is not already used
+       if(dbh.checkUser(username)){
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Contact successfully added", Toast.LENGTH_SHORT);
+           dbh.addContact(username,password,firstname,address,place,email);
+
+           Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.contactAdd), Toast.LENGTH_SHORT);
+           toast.show();
+
+           this.finish();
+       }
+
+        Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.ContactUsed), Toast.LENGTH_SHORT);
         toast.show();
-
-        this.finish();
     }
 
 }

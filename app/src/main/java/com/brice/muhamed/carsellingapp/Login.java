@@ -72,11 +72,11 @@ public class Login extends ActionBarActivity {
 
         //checks fields are filled
         if(TextUtils.isEmpty(username)){
-            txtUsername.setError("The username cannot be empty !");
+            txtUsername.setError(getString(R.string.UsernameNotempty));
             return;
         }
         if(TextUtils.isEmpty(password)){
-            txtPassword.setError("The password cannot be empty !");
+            txtPassword.setError(getString(R.string.PasswordNotEmpty));
             return;
         }
 
@@ -96,7 +96,7 @@ public class Login extends ActionBarActivity {
             return;
         }
 
-        ShowToast("Wrong Username/Password ");
+        ShowToast(getString(R.string.WrongPassword));
 
 
 

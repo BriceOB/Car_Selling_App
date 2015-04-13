@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -178,6 +179,40 @@ private Menu menu;
 
         Intent intent = new Intent(this, CarsForSale.class);
 
+
+        EditText yearFrom = (EditText)findViewById(R.id.editTextYearFrom);
+        EditText yearTo = (EditText)findViewById(R.id.editTextYearTo);
+        EditText kmFrom = (EditText)findViewById(R.id.editTextKmFrom);
+        EditText kmTo = (EditText)findViewById(R.id.editTextKmTo);
+        EditText priceFrom = (EditText)findViewById(R.id.editTextPriceFrom);
+        EditText priceTo = (EditText)findViewById(R.id.editTextPriceTo);
+
+        //checks fields are filled
+        if(TextUtils.isEmpty(yearFrom.getText().toString())){
+            yearFrom.setError(getString(R.string.FieldNotEmpty));
+            return;
+        }
+        if(TextUtils.isEmpty(yearTo.getText().toString())){
+            yearTo.setError(getString(R.string.FieldNotEmpty));
+            return;
+        }
+        if(TextUtils.isEmpty(kmFrom.getText().toString())){
+            kmFrom.setError(getString(R.string.FieldNotEmpty));
+            return;
+        }
+        if(TextUtils.isEmpty(kmTo.getText().toString())){
+            kmTo.setError(getString(R.string.FieldNotEmpty));
+            return;
+        }
+        if(TextUtils.isEmpty(priceFrom.getText().toString())){
+            priceFrom.setError(getString(R.string.FieldNotEmpty));
+            return;
+        }
+        if(TextUtils.isEmpty(priceTo.getText().toString())){
+            priceTo.setError(getString(R.string.FieldNotEmpty));
+            return;
+        }
+
         String[] SearchParameters = {
                 ((Spinner)findViewById(R.id.spinnerManufacturer)).getSelectedItem().toString() ,
                 ((Spinner)findViewById(R.id.spinnerModel)).getSelectedItem().toString(),
@@ -187,11 +222,14 @@ private Menu menu;
                 ((EditText)findViewById(R.id.editTextKmTo)).getText().toString(),
                 ((EditText)findViewById(R.id.editTextPriceFrom)).getText().toString(),
                 ((EditText)findViewById(R.id.editTextPriceTo)).getText().toString(),
-                ((Spinner)findViewById(R.id.spinnerOrder)).getSelectedItem().toString()};
+                spinnerOrder.getSelectedItemPosition()+""};
 
         LastSearchParameters = SearchParameters;
         intent.putExtra(EXTRA_MESSAGE, SearchParameters);
         startActivity(intent);
+
+
+
     }
 
     public void login(MenuItem item) {

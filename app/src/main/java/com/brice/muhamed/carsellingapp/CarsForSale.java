@@ -76,7 +76,7 @@ public class CarsForSale extends ActionBarActivity {
             Context context = getApplicationContext();
             int duration = Toast.LENGTH_SHORT;
 
-            Toast toast = Toast.makeText(context, "no car available", duration);
+            Toast toast = Toast.makeText(context, getString(R.string.NoCar), duration);
             toast.show();
 
             finish();

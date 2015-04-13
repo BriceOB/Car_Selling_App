@@ -149,6 +149,26 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 */
     }
 
+    public Boolean checkUser(String Username){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor c = db.query(SellerContract.EntrySeller.TABLE_NAME,
+                new String[] { "*" },
+                SellerContract.EntrySeller.COLUMN_NAME_USERNAME + " = '" + Username + "'",
+                null,
+                null,
+                null,
+                null);
+
+        if ( c.getCount() ==0){
+            return true;
+        }
+
+        return false;
+
+    }
+
     public Seller checkUserPassword(String Username, String Password){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -253,11 +273,24 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public String[][] GetResultSearch(String Brand, String Model, String Year, String YearTo, String KmFrom, String KmTo, String PriceFrom, String PriceTo, String Order){
         SQLiteDatabase db = this.getWritableDatabase();
 
+        String order;
+
         switch (Order){
+
             //Date
             case "1":
+              order =  CarContract.EntryCar.COLUMN_NAME_CarDate;
 
+            //Price
+            case "2":
+                order = CarContract.EntryCar.COLUMN_NAME_Price;
 
+            //Kilometer
+            case "3" :
+                order = CarContract.EntryCar.COLUMN_NAME_Kilometers;
+
+            default:
+                order = CarContract.EntryCar.COLUMN_NAME_CreationDate;
         }
 
         Cursor c = db.query(ManufacturerContract.EntryManufacturer.TABLE_NAME + ", " + CarContract.EntryCar.TABLE_NAME,
@@ -275,7 +308,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 null,
                 null,
                 null,
-                null);
+                order + " ASC");
 
 
 

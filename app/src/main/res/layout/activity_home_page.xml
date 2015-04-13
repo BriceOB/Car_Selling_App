@@ -84,7 +84,9 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextYearFrom"
-                android:inputType="number" />
+                android:inputType="number"
+                android:autoText="false"
+                android:text="0" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -98,7 +100,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextYearTo"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="2015" />
 
         </TableRow>
         <TableRow>
@@ -122,7 +125,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextKmFrom"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="0" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -136,7 +140,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextKmTo"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="999999" />
 
         </TableRow>
         <TableRow>
@@ -161,7 +166,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextPriceFrom"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="0" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -175,7 +181,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/editTextPriceTo"
-                android:inputType="number" />
+                android:inputType="number"
+                android:text="999999" />
 
         </TableRow>
         </TableLayout>

@@ -215,7 +215,7 @@ public class InsertCarDetails extends ActionBarActivity {
             dbh.updateCarInfos(car, CarId,manufacturer.getSelectedItem().toString());
         }
 
-        Toast toast = Toast.makeText(getApplicationContext(), "Car successfully added", Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.CarAdded), Toast.LENGTH_SHORT);
         toast.show();
 
         ImagePath = "";
