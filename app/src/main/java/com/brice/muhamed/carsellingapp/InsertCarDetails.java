@@ -49,6 +49,7 @@ public class InsertCarDetails extends ActionBarActivity {
     private String CarId;
     private String ImagePath="";
     private ImageView iv = null;
+    private Bitmap bm = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +135,10 @@ public class InsertCarDetails extends ActionBarActivity {
 
         ImageView imageView = (ImageView)findViewById(R.id.imageViewInsertCarDetails);
         imageView = iv;
+        if(bm != null){
+            imageView.setImageBitmap(bm);
+        }
+
 
     }
 
@@ -295,6 +300,7 @@ public class InsertCarDetails extends ActionBarActivity {
                         int height = thumbnail.getHeight() * width / thumbnail.getWidth();
                         imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
                         iv = imageView;
+                        bm = thumbnail;
 
 
                     } catch (FileNotFoundException e) {
@@ -325,6 +331,7 @@ public class InsertCarDetails extends ActionBarActivity {
                 int height = thumbnail.getHeight() * width / thumbnail.getWidth();
                 imageView.setImageBitmap(Bitmap.createScaledBitmap(thumbnail, width, height, false));
                 iv = imageView;
+                bm = thumbnail;
 
 
             }

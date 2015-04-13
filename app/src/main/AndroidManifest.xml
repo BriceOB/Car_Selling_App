@@ -46,7 +46,8 @@
             android:name=".InsertCarDetails"
             android:label="@string/title_activity_insert_car_details"
             android:parentActivityName=".HomePage"
-         >
+            android:configChanges="orientation"
+            android:screenOrientation="sensor">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.brice.muhamed.carsellingapp.HomePage" />
