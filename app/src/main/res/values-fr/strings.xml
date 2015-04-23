@@ -105,6 +105,9 @@
     <string name="UsernameNotempty">L\'utilisateur ne peut pas être vide !</string>
     <string name="WrongPassword">Mot de passe/Utilisateur incorrect </string>
 
+    <string name="modify">Modifier</string>
+    <string name="delete">Supprimer</string>
+
     <string-array name="PopUpIMage">
         <item>Appareil photo</item>
         <item>Choisir de la Gallerie</item>

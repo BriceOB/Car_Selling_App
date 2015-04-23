@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -44,10 +45,10 @@
         </activity>
         <activity
             android:name=".InsertCarDetails"
+            android:configChanges="orientation"
             android:label="@string/title_activity_insert_car_details"
             android:parentActivityName=".HomePage"
-            android:configChanges="orientation"
-            android:screenOrientation="sensor">
+            android:screenOrientation="sensor" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.brice.muhamed.carsellingapp.HomePage" />

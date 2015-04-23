@@ -75,9 +75,12 @@ public class InsertSeller extends ActionBarActivity {
 
            this.finish();
        }
+        else{
+           Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.ContactUsed), Toast.LENGTH_SHORT);
+           toast.show();
+       }
 
-        Toast toast = Toast.makeText(getApplicationContext(), getString(R.string.ContactUsed), Toast.LENGTH_SHORT);
-        toast.show();
+
     }
 
 }
